@@ -1,0 +1,1563 @@
+@import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=Caveat:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap");
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+:root {
+  --paper: #faf9f5;
+  --ink: #182d61;
+  --text: #252525;
+  --muted: #707070;
+
+  --blue-line: rgba(65, 130, 190, 0.18);
+  --red-line: rgba(210, 70, 70, 0.45);
+
+  --green-highlight: #dfeecb;
+
+  --border: rgba(24, 45, 97, 0.2);
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--paper);
+
+  color: var(--text);
+
+  font-family: "Inter", sans-serif;
+
+  overflow-x: hidden;
+}
+
+
+/* =========================================================
+   NOTEBOOK PAGE
+========================================================= */
+
+.page {
+  min-height: 100vh;
+
+  overflow-x: hidden;
+
+  background-color: var(--paper);
+
+  background-image:
+    linear-gradient(
+      to right,
+      transparent 0,
+      transparent 89px,
+      var(--red-line) 89px,
+      var(--red-line) 91px,
+      transparent 91px
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 41px,
+      var(--blue-line) 42px,
+      transparent 43px
+    );
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.navbar {
+  height: 80px;
+
+  margin-left: 91px;
+
+  padding: 0 7vw;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+}
+
+.logo {
+  color: var(--ink);
+
+  font-family: "Caveat", cursive;
+
+  font-size: 34px;
+
+  font-weight: 700;
+
+  text-decoration: none;
+}
+
+nav {
+  display: flex;
+
+  gap: 32px;
+}
+
+nav a {
+  color: var(--ink);
+
+  text-decoration: none;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  transition: opacity 0.2s ease;
+}
+
+nav a:hover {
+  opacity: 0.6;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+  min-height: 650px;
+
+  margin-left: 91px;
+
+  padding:
+    100px
+    10vw
+    100px
+    7vw;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+}
+
+.eyebrow {
+  margin-bottom: 25px;
+
+  color: var(--ink);
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.15em;
+}
+
+
+/* Priyanshu */
+
+.hero h1 {
+  color: var(--ink);
+
+  font-family: "Bodoni Moda", serif;
+
+  font-size: clamp(68px, 9vw, 120px);
+
+  font-weight: 500;
+
+  line-height: 0.88;
+
+  letter-spacing: -0.045em;
+}
+
+
+/* Bhagat */
+
+.hero h1 span {
+  display: block;
+
+  margin-top: 8px;
+
+  color: var(--ink);
+
+  font-family: "Caveat", cursive;
+
+  font-size: 1.08em;
+
+  font-weight: 600;
+
+  line-height: 0.8;
+
+  letter-spacing: 0;
+}
+
+
+/* Hero description */
+
+.hero-description {
+  max-width: 600px;
+
+  margin-top: 45px;
+
+  color: #4b4b4b;
+
+  font-size: 18px;
+
+  line-height: 1.8;
+}
+
+
+/* =========================================================
+   HERO BUTTONS
+========================================================= */
+
+.hero-buttons {
+  display: flex;
+
+  gap: 14px;
+
+  margin-top: 35px;
+}
+
+.button {
+  padding: 13px 20px;
+
+  text-decoration: none;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.button.primary {
+  background: var(--ink);
+
+  color: white;
+}
+
+.button.primary:hover {
+  transform: translateY(-2px);
+}
+
+.button.secondary {
+  color: var(--ink);
+
+  border: 1px solid var(--ink);
+}
+
+.button.secondary:hover {
+  background: var(--ink);
+
+  color: white;
+}
+.view-work-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  /* keep your existing size */
+  padding: 0 24px;
+
+  background: #1b3268;
+  color: white;
+  border: 1px solid #1b3268;
+
+  text-decoration: none;
+  line-height: 1;
+  box-sizing: border-box;
+
+  transition: all 0.25s ease;
+}
+
+.view-work-btn:hover {
+  background: white;
+  color: #1b3268;
+  border-color: #1b3268;
+}
+
+/* =========================================================
+   HERO DETAILS
+========================================================= */
+
+.hero-details {
+  display: flex;
+
+  align-items: center;
+
+  gap: 30px;
+
+  margin-top: 55px;
+
+  color: var(--muted);
+
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   SOCIAL BUTTONS
+========================================================= */
+
+.social-buttons {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  margin-left: 8px;
+}
+
+.social-button {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  border-radius: 6px;
+
+  text-decoration: none;
+
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.social-button img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+}
+
+.social-button:hover {
+  transform: translateY(-3px);
+
+  opacity: 0.8;
+}
+
+
+/* =========================================================
+   GENERAL SECTIONS
+========================================================= */
+
+.section {
+  margin-left: 91px;
+
+  padding:
+    120px
+    7vw;
+
+  max-width: 1400px;
+}
+
+.section-heading {
+  display: flex;
+
+  align-items: center;
+
+  gap: 18px;
+
+  margin-bottom: 60px;
+}
+
+.section-heading > span {
+  color: var(--ink);
+
+  font-size: 12px;
+
+  font-weight: 700;
+}
+
+.section-heading h2 {
+  position: relative;
+
+  color: var(--ink);
+
+  font-family: "Caveat", cursive;
+
+  font-size: 42px;
+
+  font-weight: 600;
+}
+
+.section-heading h2::before {
+  content: "";
+
+  position: absolute;
+
+  left: -10px;
+  right: -10px;
+
+  bottom: 5px;
+
+  height: 13px;
+
+  background: var(--green-highlight);
+
+  z-index: -1;
+
+  transform: rotate(-1deg);
+}
+
+
+/* =========================================================
+   ABOUT
+========================================================= */
+
+.about-section {
+  padding-top: 100px;
+
+  padding-bottom: 120px;
+}
+
+.about-layout {
+  width: 100%;
+
+  max-width: 1050px;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 680px)
+    235px;
+
+  column-gap: 75px;
+
+  align-items: start;
+}
+
+
+/* ---------------------------------------------------------
+   ABOUT LEFT
+--------------------------------------------------------- */
+
+.about-main {
+  width: 100%;
+
+  text-align: justify;
+}
+
+.about-main .about-intro {
+  margin: 0 0 38px;
+
+  color: var(--text);
+
+  font-size: 27px;
+
+  line-height: 1.55;
+
+  font-weight: 400;
+
+  text-align: justify;
+
+  text-justify: inter-word;
+}
+
+.about-main p:not(.about-intro) {
+  margin: 0 0 32px;
+
+  color: #505050;
+
+  font-size: 16px;
+
+  line-height: 1.9;
+
+  text-align: justify;
+
+  text-justify: inter-word;
+}
+
+.about-main p:last-child {
+  margin-bottom: 0;
+}
+
+
+/* ---------------------------------------------------------
+   ABOUT RIGHT
+--------------------------------------------------------- */
+
+.about-side {
+  width: 100%;
+
+  padding-top: 0;
+
+  text-align: center;
+
+  border-top: 1px solid var(--border);
+}
+
+.about-detail {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 9px;
+
+  padding: 20px 0;
+
+  border-bottom: 1px solid var(--border);
+
+  text-align: center;
+}
+
+.detail-label {
+  color: var(--muted);
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.15em;
+
+  text-align: center;
+}
+
+.detail-value {
+  color: var(--ink);
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  line-height: 1.5;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   PROJECTS
+========================================================= */
+
+.projects-section {
+  padding-top: 100px;
+
+  padding-bottom: 120px;
+}
+
+.projects {
+  width: 100%;
+
+  max-width: 1050px;
+
+  margin: 0 auto;
+
+  border-top: 1px solid var(--border);
+}
+
+
+/* Project row */
+
+.project {
+  display: grid;
+
+  grid-template-columns:
+    75px
+    minmax(0, 1fr);
+
+  gap: 25px;
+
+  padding:
+    32px
+    10px
+    35px;
+
+  border-bottom: 1px solid var(--border);
+
+  transition:
+    padding-left 0.25s ease,
+    background-color 0.25s ease;
+}
+
+.project:hover {
+  padding-left: 20px;
+
+  background: rgba(255, 255, 255, 0.25);
+}
+
+
+/* Project meta */
+
+.project-meta {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  gap: 10px;
+
+  padding-top: 5px;
+}
+
+.project-number {
+  color: var(--ink);
+
+  font-size: 11px;
+
+  font-weight: 700;
+}
+
+.project-year {
+  color: var(--muted);
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.12em;
+}
+
+.project-year.ongoing {
+  color: var(--ink);
+}
+
+
+/* Project content */
+
+.project-content {
+  width: 100%;
+}
+
+
+/* Project title */
+
+.project-title-row {
+  display: flex;
+
+  align-items: baseline;
+
+  justify-content: space-between;
+
+  gap: 30px;
+}
+
+.project-title-row h3 {
+  margin: 0;
+
+  color: var(--ink);
+
+  font-family: "Caveat", cursive;
+
+  font-size: 34px;
+
+  font-weight: 600;
+
+  line-height: 1.05;
+}
+
+.project:nth-child(2) .project-title-row h3 {
+  max-width: 700px;
+}
+
+
+/* Project link */
+
+.project-link {
+  flex-shrink: 0;
+
+  color: var(--ink);
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  text-decoration: none;
+
+  border-bottom: 1px solid transparent;
+
+  transition: border-color 0.2s ease;
+}
+
+.project-link:hover {
+  border-bottom-color: var(--ink);
+}
+
+
+/* Project description */
+
+.project-description {
+  max-width: 720px;
+
+  margin-top: 13px;
+
+  color: #505050;
+
+  font-size: 14px;
+
+  line-height: 1.75;
+
+  text-align: justify;
+
+  text-justify: inter-word;
+}
+
+
+/* Project bottom */
+
+.project-bottom {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 25px;
+
+  margin-top: 20px;
+}
+
+
+/* Project tags */
+
+.project-tags {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 7px;
+}
+
+.project-tags span {
+  padding:
+    7px
+    10px;
+
+  border: 1px solid var(--border);
+
+  color: var(--ink);
+
+  font-size: 10px;
+
+  line-height: 1;
+
+  background: rgba(250, 249, 245, 0.3);
+}
+
+
+/* Project result */
+
+.project-result {
+  flex-shrink: 0;
+
+  color: var(--ink);
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  text-align: right;
+}
+
+
+/* =========================================================
+   SKILLS
+========================================================= */
+
+.skills-section {
+  position: relative;
+
+  padding-top: 90px;
+
+  padding-bottom: 100px;
+
+  overflow: hidden;
+}
+
+.skills-container {
+  position: relative;
+
+  width: 100%;
+
+  max-width: 760px;
+
+  margin: 0 auto;
+
+  display: flex;
+
+  justify-content: center;
+
+  text-align: center;
+}
+
+.skills-content {
+  width: 100%;
+
+  max-width: 620px;
+
+  margin: 0 auto;
+}
+
+
+/* Skill groups */
+
+.skill-group {
+  margin-bottom: 30px;
+}
+
+.skill-group:last-child {
+  margin-bottom: 0;
+}
+
+.skill-group h3 {
+  margin-bottom: 11px;
+
+  color: var(--ink);
+
+  font-family: "Caveat", cursive;
+
+  font-size: 26px;
+
+  font-weight: 600;
+
+  line-height: 1;
+}
+
+.skill-tags {
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 7px;
+}
+
+.skill-tags span {
+  padding:
+    8px
+    11px;
+
+  background: rgba(250, 249, 245, 0.45);
+
+  border: 1px solid var(--border);
+
+  color: var(--text);
+
+  font-size: 11px;
+
+  line-height: 1;
+
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.skill-tags span:hover {
+  transform: translateY(-2px);
+
+  background: var(--green-highlight);
+}
+
+
+/* =========================================================
+   SKILL DOODLES
+========================================================= */
+
+.skills-doodle {
+  position: absolute;
+
+  top: 50%;
+
+  width: 145px;
+  height: 145px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  pointer-events: none;
+
+  z-index: 1;
+
+  background: var(--paper);
+
+  border: 2px solid #111;
+
+  padding: 8px;
+}
+
+.skills-doodle img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: contain;
+
+  filter:
+    grayscale(1)
+    contrast(700%)
+    brightness(1.25);
+
+  mix-blend-mode: multiply;
+
+  opacity: 0.72;
+}
+
+
+/* Laptop higher */
+
+.doodle-left {
+  right: calc(100% - 15px);
+
+  transform:
+    translateY(-100%)
+    rotate(-5deg);
+}
+
+
+/* Headphones lower */
+
+.doodle-right {
+  left: calc(100% - 15px);
+
+  transform:
+    translateY(0%)
+    rotate(5deg);
+}
+
+
+/* =========================================================
+   EXPERIENCE & ACHIEVEMENT
+========================================================= */
+
+.achievement-section {
+  padding-top: 100px;
+
+  padding-bottom: 120px;
+}
+
+.achievement-list {
+  width: 100%;
+
+  max-width: 1050px;
+
+  margin: 0 auto;
+
+  border-top: 1px solid var(--border);
+}
+
+.achievement-item {
+  display: grid;
+
+  grid-template-columns:
+    180px
+    minmax(0, 1fr);
+
+  gap: 55px;
+
+  padding:
+    45px
+    10px;
+
+  border-bottom: 1px solid var(--border);
+}
+
+.achievement-meta {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 11px;
+
+  padding-top: 7px;
+}
+
+.achievement-meta span {
+  color: var(--muted);
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.13em;
+}
+
+.achievement-main h3 {
+  margin: 0;
+
+  color: var(--ink);
+
+  font-family: "Caveat", cursive;
+
+  font-size: 40px;
+
+  font-weight: 600;
+
+  line-height: 1;
+}
+
+.achievement-subtitle {
+  margin-top: 8px;
+
+  color: var(--ink);
+
+  font-size: 14px;
+
+  font-weight: 600;
+}
+
+.achievement-description {
+  max-width: 700px;
+
+  margin-top: 17px;
+
+  color: #505050;
+
+  font-size: 14px;
+
+  line-height: 1.8;
+
+  text-align: justify;
+
+  text-justify: inter-word;
+}
+
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact-section {
+  padding-top: 100px;
+
+  padding-bottom: 140px;
+}
+
+.contact-content {
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+.contact-intro {
+  color: #505050;
+
+  font-size: 18px;
+
+  line-height: 1.8;
+
+  max-width: 650px;
+}
+
+.contact-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.contact-link {
+  color: var(--ink);
+
+  text-decoration: none;
+
+  border-bottom: 1px solid var(--ink);
+
+  padding-bottom: 4px;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  transition: opacity 0.2s ease;
+}
+
+.contact-link:hover {
+  opacity: 0.6;
+}
+
+
+/* =========================================================
+   CONTACT CLOSING
+========================================================= */
+
+.contact-closing {
+  margin-top: 32px;
+
+  font-family: "Caveat", cursive;
+
+  font-size: 26px;
+
+  font-weight: 500;
+
+  line-height: 1.2;
+
+  color: var(--ink);
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+  margin-left: 91px;
+
+  padding:
+    40px
+    7vw
+    50px;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  color: var(--muted);
+
+  font-size: 11px;
+}
+
+
+/* =========================================================
+   TABLET — 1100px
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .skills-container {
+    max-width: 650px;
+  }
+
+  .skills-doodle {
+    width: 115px;
+    height: 115px;
+  }
+
+  .doodle-left {
+    right: calc(100% - 5px);
+  }
+
+  .doodle-right {
+    left: calc(100% - 5px);
+  }
+
+  .about-layout {
+    grid-template-columns:
+      minmax(0, 650px)
+      190px;
+
+    gap: 50px;
+  }
+
+}
+
+
+/* =========================================================
+   TABLET — 850px
+========================================================= */
+
+@media (max-width: 850px) {
+
+  .page {
+    background-image:
+      linear-gradient(
+        to right,
+        transparent 0,
+        transparent 24px,
+        var(--red-line) 24px,
+        var(--red-line) 25px,
+        transparent 25px
+      ),
+      repeating-linear-gradient(
+        to bottom,
+        transparent 0,
+        transparent 41px,
+        var(--blue-line) 42px,
+        transparent 43px
+      );
+  }
+
+
+  .navbar,
+  .hero,
+  .section,
+  footer {
+    margin-left: 25px;
+  }
+
+
+  /* Navigation */
+
+  .navbar {
+    padding: 0 25px;
+  }
+
+  nav {
+    gap: 14px;
+  }
+
+  nav a {
+    font-size: 11px;
+  }
+
+
+  /* Hero */
+
+  .hero {
+    padding:
+      90px
+      35px
+      80px
+      30px;
+
+    min-height: 600px;
+  }
+
+  .hero h1 {
+    font-size: 80px;
+  }
+
+  .hero-description {
+    font-size: 16px;
+  }
+
+
+  /* Sections */
+
+  .section {
+    padding:
+      90px
+      30px;
+  }
+
+
+  /* About */
+
+  .about-layout {
+    grid-template-columns: 1fr;
+
+    gap: 50px;
+
+    margin: 0;
+  }
+
+  .about-main {
+    max-width: 700px;
+  }
+
+  .about-main .about-intro {
+    font-size: 23px;
+  }
+
+  .about-side {
+    max-width: 400px;
+  }
+
+
+  /* Projects */
+
+  .project {
+    grid-template-columns:
+      60px
+      minmax(0, 1fr);
+
+    gap: 25px;
+  }
+
+  .project-title-row h3 {
+    font-size: 32px;
+  }
+
+
+  /* Skills */
+
+  .skills-container {
+    max-width: 620px;
+  }
+
+  .skills-content {
+    max-width: 560px;
+  }
+
+  .skills-doodle {
+    width: 85px;
+    height: 85px;
+  }
+
+  .doodle-left {
+    right: calc(100% - 5px);
+  }
+
+  .doodle-right {
+    left: calc(100% - 5px);
+  }
+
+
+  /* Achievement */
+
+  .achievement-item {
+    grid-template-columns:
+      130px
+      minmax(0, 1fr);
+
+    gap: 30px;
+  }
+
+  .achievement-main h3 {
+    font-size: 34px;
+  }
+
+
+  /* Contact */
+
+  .contact-intro {
+    font-size: 16px;
+  }
+
+
+  /* Hero social */
+
+  .social-buttons {
+    margin-left: 0;
+
+    margin-top: 8px;
+  }
+
+  .hero-details {
+    align-items: flex-start;
+
+    flex-wrap: wrap;
+
+    gap: 12px 25px;
+  }
+
+
+  /* Footer */
+
+  footer {
+    padding-right: 30px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE — 600px
+========================================================= */
+
+@media (max-width: 600px) {
+
+  /* Navigation */
+
+  nav {
+    display: none;
+  }
+
+
+  /* Hero */
+
+  .hero h1 {
+    font-size: 65px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+  .hero-details {
+    flex-direction: column;
+
+    gap: 8px;
+  }
+
+  .social-buttons {
+    flex-direction: row;
+
+    margin-top: 5px;
+  }
+
+
+  /* About */
+
+  .about-main .about-intro {
+    font-size: 21px;
+
+    line-height: 1.5;
+  }
+
+  .about-main p:not(.about-intro) {
+    font-size: 14px;
+
+    line-height: 1.8;
+  }
+
+
+  /* Projects */
+
+  .project {
+    grid-template-columns:
+      45px
+      minmax(0, 1fr);
+
+    gap: 18px;
+
+    padding:
+      30px
+      5px;
+  }
+
+  .project:hover {
+    padding-left: 10px;
+  }
+
+  .project-title-row {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 10px;
+  }
+
+  .project-title-row h3 {
+    font-size: 29px;
+  }
+
+  .project-description {
+    font-size: 13px;
+
+    text-align: left;
+  }
+
+  .project-bottom {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 16px;
+  }
+
+  .project-result {
+    text-align: left;
+  }
+
+
+  /* Skills */
+
+  .skills-container {
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 15px;
+  }
+
+  .skills-content {
+    width: 100%;
+  }
+
+  .skills-doodle {
+    position: relative;
+
+    top: auto;
+    left: auto;
+    right: auto;
+
+    width: 105px;
+    height: 105px;
+
+    transform: none;
+
+    margin: 5px 0;
+  }
+
+  .doodle-left {
+    order: -1;
+  }
+
+  .skills-content {
+    order: 0;
+  }
+
+  .doodle-right {
+    order: 1;
+  }
+
+
+  /* Achievement */
+
+  .achievement-item {
+    grid-template-columns: 1fr;
+
+    gap: 20px;
+
+    padding:
+      35px
+      5px;
+  }
+
+  .achievement-meta {
+    flex-direction: row;
+
+    flex-wrap: wrap;
+
+    gap: 10px 20px;
+  }
+
+  .achievement-main h3 {
+    font-size: 31px;
+  }
+
+  .achievement-description {
+    text-align: left;
+  }
+
+
+  /* Contact */
+
+  .contact-intro {
+    font-size: 15px;
+  }
+
+
+
+  /* Footer */
+
+  footer {
+    flex-direction: column;
+
+    gap: 10px;
+  }
+
+}
