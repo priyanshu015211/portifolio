@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import "./App.css";
-
 
 const PROJECTS = {
   "uac-capacity-monitor": {
@@ -84,66 +83,40 @@ const PROJECTS = {
   }
 };
 
-function App() {
 
-  const [activeProject, setActiveProject] = useState(null);
+function ProjectDetailPage() {
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
+  const match = pathname.match(/^\/work\/([^/]+)$/);
+  const slug = match ? decodeURIComponent(match[1]) : null;
+  const project = slug ? PROJECTS[slug] : null;
 
-  useEffect(() => {
-    const syncFromUrl = () => {
-      const match = window.location.hash.match(/^#project\/(.+)$/);
-      setActiveProject(match ? decodeURIComponent(match[1]) : null);
-    };
-
-    syncFromUrl();
-    window.addEventListener("hashchange", syncFromUrl);
-    window.addEventListener("popstate", syncFromUrl);
-
-    return () => {
-      window.removeEventListener("hashchange", syncFromUrl);
-      window.removeEventListener("popstate", syncFromUrl);
-    };
-  }, []);
-
-  const openProject = (slug) => {
-    window.location.hash = `project/${slug}`;
-    window.scrollTo(0, 0);
-    setActiveProject(slug);
-  };
-
-  const closeProject = () => {
-    // Dedicated collection route. Do not use #work or #top here.
-    window.location.hash = "selected-work";
-    setActiveProject(null);
-
-    // The desk/selected-work DOM is restored after state changes.
-    // Scroll only after that render is complete.
-    window.setTimeout(() => {
-      document.getElementById("selected-work")?.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
-    }, 80);
-  };
-
-  const goToDesk = () => {
-    window.location.hash = "top";
-    setActiveProject(null);
-    window.setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }, 30);
-  };
-
-  if (activeProject && PROJECTS[activeProject]) {
-    const project = PROJECTS[activeProject];
-
+  if (!project) {
     return (
       <main className="project-detail-page">
         <div className="project-detail-paper">
           <div className="project-nav-actions">
-            <button type="button" className="project-collection-link" onClick={closeProject}>
+            <button type="button" className="project-collection-link" onClick={() => navigate("/work")}>
               <span aria-hidden="true">←</span> EXPLORE MORE WORK
             </button>
-            <button type="button" className="project-desk-link" onClick={goToDesk}>
+            <button type="button" className="project-desk-link" onClick={() => navigate("/")}>
+              DESK ↗
+            </button>
+          </div>
+          <h1>Project not found</h1>
+        </div>
+      </main>
+    );
+  }
+
+  return (
+      <main className="project-detail-page">
+        <div className="project-detail-paper">
+          <div className="project-nav-actions">
+            <button type="button" className="project-collection-link" onClick={() => navigate("/work")}>
+              <span aria-hidden="true">←</span> EXPLORE MORE WORK
+            </button>
+            <button type="button" className="project-desk-link" onClick={() => navigate("/")}>
               DESK ↗
             </button>
           </div>
@@ -205,9 +178,315 @@ function App() {
           </div>
         </div>
       </main>
-    );
-  }
 
+  );
+}
+
+
+
+function SelectedWorkPage() {
+  const navigate = useNavigate();
+
+  return (
+    <div className="page work-page">
+      <header className="navbar">
+        <NavLink to="/" className="logo" aria-label="Back to desk">
+          PR.
+        </NavLink>
+      </header>
+
+      <button
+        type="button"
+        className="page-back work-page-back"
+        onClick={() => navigate("/")}
+      >
+        ← DESK
+      </button>
+
+      <main>
+        <section
+          id="selected-work"
+          className="section projects-section"
+        >
+
+          <div className="section-heading">
+
+            <span>02</span>
+
+            <h2>
+              Selected work
+            </h2>
+
+          </div>
+
+
+          <div className="projects">
+
+
+            {/* PROJECT 01 */}
+
+            <article className="project project-clickable" role="link" tabIndex="0" onClick={() => navigate("/work/uac-capacity-monitor")} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); navigate("/work/uac-capacity-monitor"); } }}>
+
+              <div className="project-meta">
+
+                <span className="project-number">
+                  01
+                </span>
+
+                <span className="project-year">
+                  2026
+                </span>
+
+              </div>
+
+
+              <div className="project-content">
+
+                <div className="project-title-row">
+
+                  <h3>
+                    UAC Capacity Monitor
+                  </h3>
+
+                  <button
+                    type="button"
+                    className="project-link project-open"
+                  >
+                    <span>Open project</span>
+                    <span aria-hidden="true">↗</span>
+                  </button>
+
+                </div>
+
+
+                <p className="project-description">
+                  A healthcare analytics and forecasting platform
+                  for monitoring operational capacity and predicting
+                  future demand.
+                </p>
+
+
+                <div className="project-bottom">
+
+                  <div className="project-tags">
+
+                    <span>Python</span>
+                    <span>Streamlit</span>
+                    <span>Scikit-learn</span>
+                    <span>Prophet</span>
+
+                  </div>
+
+                  <strong className="project-result">30 / 60 / 90 DAY FORECASTS</strong>
+
+                </div>
+
+              </div>
+
+            </article>
+
+
+            {/* PROJECT 02 */}
+
+            <article className="project project-clickable" role="link" tabIndex="0" onClick={() => navigate("/work/ai-developer-career-intelligence")} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); navigate("/work/ai-developer-career-intelligence"); } }}>
+
+              <div className="project-meta">
+
+                <span className="project-number">
+                  02
+                </span>
+
+                <span className="project-year ongoing">
+                  ONGOING
+                </span>
+
+              </div>
+
+
+              <div className="project-content">
+
+                <div className="project-title-row">
+
+                  <h3>
+                    AI Developer Career Intelligence Platform
+                  </h3>
+
+                  <button
+                    type="button"
+                    className="project-link project-open"
+                  >
+                    <span>Open project</span>
+                    <span aria-hidden="true">↗</span>
+                  </button>
+
+                </div>
+
+
+                <p className="project-description">
+                  An AI-powered platform that analyzes GitHub
+                  repositories to generate developer skill insights,
+                  career-readiness scores and personalized
+                  recommendations.
+                </p>
+
+
+                <div className="project-bottom">
+
+                  <div className="project-tags">
+
+                    <span>React</span>
+                    <span>FastAPI</span>
+                    <span>PostgreSQL</span>
+                    <span>OpenAI API</span>
+
+                  </div>
+
+                  <strong className="project-result">GITHUB · SKILL INTELLIGENCE</strong>
+
+                </div>
+
+              </div>
+
+            </article>
+
+
+            {/* PROJECT 03 */}
+
+            <article className="project project-clickable" role="link" tabIndex="0" onClick={() => navigate("/work/aegiscare")} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); navigate("/work/aegiscare"); } }}>
+
+              <div className="project-meta">
+
+                <span className="project-number">
+                  03
+                </span>
+
+                <span className="project-year">
+                  2026
+                </span>
+
+              </div>
+
+
+              <div className="project-content">
+
+                <div className="project-title-row">
+
+                  <h3>
+                    AegisCare
+                  </h3>
+
+                  <button
+                    type="button"
+                    className="project-link project-open"
+                  >
+                    <span>Open project</span>
+                    <span aria-hidden="true">↗</span>
+                  </button>
+
+                </div>
+
+
+                <p className="project-description">
+                  An AI-powered healthcare platform focused on
+                  improving accessibility through intelligent
+                  patient assistance and healthcare management.
+                </p>
+
+
+                <div className="project-bottom">
+
+                  <div className="project-tags">
+
+                    <span>React</span>
+                    <span>FastAPI</span>
+                    <span>PostgreSQL</span>
+                    <span>Python</span>
+
+                  </div>
+
+                  <strong className="project-result">EMERGENCY COORDINATION</strong>
+
+                </div>
+
+              </div>
+
+            </article>
+
+
+            {/* PROJECT 04 */}
+
+            <article className="project project-clickable" role="link" tabIndex="0" onClick={() => navigate("/work/human-activity-recognition")} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); navigate("/work/human-activity-recognition"); } }}>
+
+              <div className="project-meta">
+
+                <span className="project-number">
+                  04
+                </span>
+
+                <span className="project-year">
+                  2025
+                </span>
+
+              </div>
+
+
+              <div className="project-content">
+
+                <div className="project-title-row">
+
+                  <h3>
+                    Human Activity Recognition
+                  </h3>
+
+                  <button
+                    type="button"
+                    className="project-link project-open"
+                  >
+                    <span>Open project</span>
+                    <span aria-hidden="true">↗</span>
+                  </button>
+
+                </div>
+
+
+                <p className="project-description">
+                  A machine learning system that classifies human
+                  activities using wearable and mobile health
+                  sensor data.
+                </p>
+
+
+                <div className="project-bottom">
+
+                  <div className="project-tags">
+
+                    <span>Python</span>
+                    <span>Scikit-learn</span>
+                    <span>Pandas</span>
+                    <span>Machine Learning</span>
+
+                  </div>
+
+                  <strong className="project-result">K-NEAREST NEIGHBORS</strong>
+
+                </div>
+
+              </div>
+
+            </article>
+
+          </div>
+
+        </section>
+      </main>
+    </div>
+  );
+}
+
+
+
+function DeskPage() {
+  const navigate = useNavigate();
 
   return (
     <div className="page">
@@ -218,14 +497,14 @@ function App() {
 
       <header className="navbar">
 
-        <a href="#top" className="logo">
+        <a href="/" className="logo">
           PR.
         </a>
 </header>
 
 
       <main id="top">
-        <a href="#top" className="page-back" aria-label="Back to desk">
+        <a href="/" className="page-back" aria-label="Back to desk">
           ← DESK
         </a>
 
@@ -275,7 +554,7 @@ function App() {
               </div>
             </a>
 
-            <a href="#selected-work" className="portfolio-book book-cream" aria-label="Open Selected Work">
+            <NavLink to="/work" className="portfolio-book book-cream" aria-label="Open Selected Work">
               <div className="book">
                 <div className="book-pages">
                   <span>WORK</span>
@@ -295,7 +574,7 @@ function App() {
                   </div>
                 </div>
               </div>
-            </a>
+            </NavLink>
 
             <a href="#skills" className="portfolio-book book-green" aria-label="Open Skills">
               <div className="book">
@@ -380,12 +659,12 @@ function App() {
 
           <div className="hero-buttons">
 
-            <a
-              href="#selected-work"
+            <NavLink
+              to="/work"
               className="hero-action hero-action--primary"
             >
               SEE WHAT I BUILD →
-            </a>
+            </NavLink>
 
             <a
               href="/resume.pdf"
@@ -546,280 +825,7 @@ function App() {
             SELECTED WORK
         ===================================================== */}
 
-        <section
-          id="selected-work"
-          className="section projects-section"
-        >
-
-          <div className="section-heading">
-
-            <span>02</span>
-
-            <h2>
-              Selected work
-            </h2>
-
-          </div>
-
-
-          <div className="projects">
-
-
-            {/* PROJECT 01 */}
-
-            <article className="project project-clickable" role="link" tabIndex="0" onClick={() => openProject("uac-capacity-monitor")} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openProject("uac-capacity-monitor"); } }}>
-
-              <div className="project-meta">
-
-                <span className="project-number">
-                  01
-                </span>
-
-                <span className="project-year">
-                  2026
-                </span>
-
-              </div>
-
-
-              <div className="project-content">
-
-                <div className="project-title-row">
-
-                  <h3>
-                    UAC Capacity Monitor
-                  </h3>
-
-                  <button
-                    type="button"
-                    className="project-link project-open"
-                  >
-                    <span>Open project</span>
-                    <span aria-hidden="true">↗</span>
-                  </button>
-
-                </div>
-
-
-                <p className="project-description">
-                  A healthcare analytics and forecasting platform
-                  for monitoring operational capacity and predicting
-                  future demand.
-                </p>
-
-
-                <div className="project-bottom">
-
-                  <div className="project-tags">
-
-                    <span>Python</span>
-                    <span>Streamlit</span>
-                    <span>Scikit-learn</span>
-                    <span>Prophet</span>
-
-                  </div>
-
-                  <strong className="project-result">30 / 60 / 90 DAY FORECASTS</strong>
-
-                </div>
-
-              </div>
-
-            </article>
-
-
-            {/* PROJECT 02 */}
-
-            <article className="project project-clickable" role="link" tabIndex="0" onClick={() => openProject("ai-developer-career-intelligence")} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openProject("ai-developer-career-intelligence"); } }}>
-
-              <div className="project-meta">
-
-                <span className="project-number">
-                  02
-                </span>
-
-                <span className="project-year ongoing">
-                  ONGOING
-                </span>
-
-              </div>
-
-
-              <div className="project-content">
-
-                <div className="project-title-row">
-
-                  <h3>
-                    AI Developer Career Intelligence Platform
-                  </h3>
-
-                  <button
-                    type="button"
-                    className="project-link project-open"
-                  >
-                    <span>Open project</span>
-                    <span aria-hidden="true">↗</span>
-                  </button>
-
-                </div>
-
-
-                <p className="project-description">
-                  An AI-powered platform that analyzes GitHub
-                  repositories to generate developer skill insights,
-                  career-readiness scores and personalized
-                  recommendations.
-                </p>
-
-
-                <div className="project-bottom">
-
-                  <div className="project-tags">
-
-                    <span>React</span>
-                    <span>FastAPI</span>
-                    <span>PostgreSQL</span>
-                    <span>OpenAI API</span>
-
-                  </div>
-
-                  <strong className="project-result">GITHUB · SKILL INTELLIGENCE</strong>
-
-                </div>
-
-              </div>
-
-            </article>
-
-
-            {/* PROJECT 03 */}
-
-            <article className="project project-clickable" role="link" tabIndex="0" onClick={() => openProject("aegiscare")} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openProject("aegiscare"); } }}>
-
-              <div className="project-meta">
-
-                <span className="project-number">
-                  03
-                </span>
-
-                <span className="project-year">
-                  2026
-                </span>
-
-              </div>
-
-
-              <div className="project-content">
-
-                <div className="project-title-row">
-
-                  <h3>
-                    AegisCare
-                  </h3>
-
-                  <button
-                    type="button"
-                    className="project-link project-open"
-                  >
-                    <span>Open project</span>
-                    <span aria-hidden="true">↗</span>
-                  </button>
-
-                </div>
-
-
-                <p className="project-description">
-                  An AI-powered healthcare platform focused on
-                  improving accessibility through intelligent
-                  patient assistance and healthcare management.
-                </p>
-
-
-                <div className="project-bottom">
-
-                  <div className="project-tags">
-
-                    <span>React</span>
-                    <span>FastAPI</span>
-                    <span>PostgreSQL</span>
-                    <span>Python</span>
-
-                  </div>
-
-                  <strong className="project-result">EMERGENCY COORDINATION</strong>
-
-                </div>
-
-              </div>
-
-            </article>
-
-
-            {/* PROJECT 04 */}
-
-            <article className="project project-clickable" role="link" tabIndex="0" onClick={() => openProject("human-activity-recognition")} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openProject("human-activity-recognition"); } }}>
-
-              <div className="project-meta">
-
-                <span className="project-number">
-                  04
-                </span>
-
-                <span className="project-year">
-                  2025
-                </span>
-
-              </div>
-
-
-              <div className="project-content">
-
-                <div className="project-title-row">
-
-                  <h3>
-                    Human Activity Recognition
-                  </h3>
-
-                  <button
-                    type="button"
-                    className="project-link project-open"
-                  >
-                    <span>Open project</span>
-                    <span aria-hidden="true">↗</span>
-                  </button>
-
-                </div>
-
-
-                <p className="project-description">
-                  A machine learning system that classifies human
-                  activities using wearable and mobile health
-                  sensor data.
-                </p>
-
-
-                <div className="project-bottom">
-
-                  <div className="project-tags">
-
-                    <span>Python</span>
-                    <span>Scikit-learn</span>
-                    <span>Pandas</span>
-                    <span>Machine Learning</span>
-
-                  </div>
-
-                  <strong className="project-result">K-NEAREST NEIGHBORS</strong>
-
-                </div>
-
-              </div>
-
-            </article>
-
-          </div>
-
-        </section>
+        
 
 
         {/* =====================================================
@@ -1215,6 +1221,21 @@ function App() {
 
     </div>
   );
+}
+
+
+function App() {
+  const { pathname } = useLocation();
+
+  if (pathname === "/work") {
+    return <SelectedWorkPage />;
+  }
+
+  if (pathname.startsWith("/work/")) {
+    return <ProjectDetailPage />;
+  }
+
+  return <DeskPage />;
 }
 
 export default App;
