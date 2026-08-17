@@ -2957,27 +2957,22 @@ main > .section:target .section-heading h2 {
   transform-origin: center;
 }
 
-.section-highlight--blue::after {
-  background: #cbd9f2;
-  transform: rotate(-0.8deg);
-}
+.section-highlight--
 
-.section-highlight--green::after {
-  background: #d9e8b7;
-  transform: rotate(0.45deg);
-}
+.section-highlight--
 
-.section-highlight--lavender::after {
-  background: #ddd4ed;
-  transform: rotate(-0.5deg);
-}
+.section-highlight--
 
-.section-highlight--amber::after {
-  background: #f0ddb1;
-  transform: rotate(0.7deg);
-}
+.section-highlight--
 
+.section-highlight--
+
+/* All section title highlights use one consistent notebook-blue marker. */
+.section-highlight--blue::after,
+.section-highlight--green::after,
+.section-highlight--lavender::after,
+.section-highlight--amber::after,
 .section-highlight--rose::after {
-  background: #efd0d5;
+  background: #cbd9f2;
   transform: rotate(-0.6deg);
 }
