@@ -17,7 +17,7 @@ const PROJECTS = {
       "Capacity stress / relief period analysis",
       "Interactive KPI monitoring and anomaly checks"
     ],
-    result: <>R<sup>2</sup> = 0.969</>,
+    result: "R² = 0.969",
     stack: "Python · Pandas · NumPy · Scikit-learn · Prophet · Streamlit · Plotly",
     links: [
       { label: "LIVE PROJECT", href: "https://priyanshu-uac-capacity-monitor.streamlit.app/" }
@@ -114,7 +114,7 @@ function App() {
     return (
       <main className="project-detail-page">
         <button type="button" className="desk-tab detail-back" onClick={closeProject}>
-          <span aria-hidden="true">←</span> PROJECTS
+          <span aria-hidden="true">←</span> DESK
         </button>
 
         <div className="project-detail-paper">
@@ -537,18 +537,7 @@ function App() {
 
             {/* PROJECT 01 */}
 
-            <article
-              className="project project-clickable"
-              role="link"
-              tabIndex="0"
-              onClick={() => openProject("ai-developer-career-intelligence")}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                  e.preventDefault();
-                  openProject("ai-developer-career-intelligence");
-                }
-              }}
-            >
+            <article className="project project-clickable" role="link" tabIndex="0" onClick={() => openProject("uac-capacity-monitor")} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openProject("uac-capacity-monitor"); } }}>
 
               <div className="project-meta">
 
@@ -600,9 +589,7 @@ function App() {
 
                   </div>
 
-                  <strong className="project-result">
-                    R<sup>2</sup> = 0.969
-                  </strong>
+                  <strong className="project-result">30 / 60 / 90 DAY FORECASTS</strong>
 
                 </div>
 
@@ -613,18 +600,7 @@ function App() {
 
             {/* PROJECT 02 */}
 
-            <article
-              className="project project-clickable"
-              role="link"
-              tabIndex="0"
-              onClick={() => openProject("aegiscare")}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                  e.preventDefault();
-                  openProject("aegiscare");
-                }
-              }}
-            >
+            <article className="project project-clickable" role="link" tabIndex="0" onClick={() => openProject("ai-developer-career-intelligence")} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openProject("ai-developer-career-intelligence"); } }}>
 
               <div className="project-meta">
 
@@ -677,9 +653,7 @@ function App() {
 
                   </div>
 
-                  <strong className="project-result">
-                    Currently building
-                  </strong>
+                  <strong className="project-result">GITHUB · SKILL INTELLIGENCE</strong>
 
                 </div>
 
@@ -690,18 +664,7 @@ function App() {
 
             {/* PROJECT 03 */}
 
-            <article
-              className="project project-clickable"
-              role="link"
-              tabIndex="0"
-              onClick={() => openProject("human-activity-recognition")}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                  e.preventDefault();
-                  openProject("human-activity-recognition");
-                }
-              }}
-            >
+            <article className="project project-clickable" role="link" tabIndex="0" onClick={() => openProject("aegiscare")} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openProject("aegiscare"); } }}>
 
               <div className="project-meta">
 
@@ -753,9 +716,7 @@ function App() {
 
                   </div>
 
-                  <strong className="project-result">
-                    Healthcare × AI
-                  </strong>
+                  <strong className="project-result">EMERGENCY COORDINATION</strong>
 
                 </div>
 
@@ -766,7 +727,7 @@ function App() {
 
             {/* PROJECT 04 */}
 
-            <article className="project">
+            <article className="project project-clickable" role="link" tabIndex="0" onClick={() => openProject("human-activity-recognition")} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openProject("human-activity-recognition"); } }}>
 
               <div className="project-meta">
 
@@ -792,7 +753,6 @@ function App() {
                   <button
                     type="button"
                     className="project-link project-open"
-                    onClick={() => openProject("human-activity-recognition")}
                   >
                     <span>Open project</span>
                     <span aria-hidden="true">↗</span>
@@ -819,9 +779,7 @@ function App() {
 
                   </div>
 
-                  <strong className="project-result">
-                    97.11% accuracy
-                  </strong>
+                  <strong className="project-result">K-NEAREST NEIGHBORS</strong>
 
                 </div>
 
