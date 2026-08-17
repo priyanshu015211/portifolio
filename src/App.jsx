@@ -88,46 +88,73 @@ function App() {
 
   const [activeProject, setActiveProject] = useState(null);
 
+  const getHashProject = () => {
+    const match = window.location.hash.match(/^#project\/(.+)$/);
+    return match ? decodeURIComponent(match[1]) : null;
+  };
+
   useEffect(() => {
-    const readHash = () => {
-      const match = window.location.hash.match(/^#project\/(.+)$/);
-      setActiveProject(match ? decodeURIComponent(match[1]) : null);
+    const syncFromUrl = () => {
+      setActiveProject(getHashProject());
+
+      if (window.location.hash === "#top") {
+        window.requestAnimationFrame(() => {
+          window.scrollTo({ top: 0, behavior: "auto" });
+        });
+      }
     };
 
-    readHash();
-    window.addEventListener("hashchange", readHash);
-    window.addEventListener("popstate", readHash);
+    syncFromUrl();
+    window.addEventListener("hashchange", syncFromUrl);
+    window.addEventListener("popstate", syncFromUrl);
 
     return () => {
-      window.removeEventListener("hashchange", readHash);
-      window.removeEventListener("popstate", readHash);
+      window.removeEventListener("hashchange", syncFromUrl);
+      window.removeEventListener("popstate", syncFromUrl);
     };
   }, []);
 
+  // After React has rendered the desk again, resolve #work to the actual
+  // Selected Work section. This is the key fix for the #work-but-still-at-top bug.
+  useEffect(() => {
+    if (activeProject) return;
+
+    if (window.location.hash === "#work") {
+      window.requestAnimationFrame(() => {
+        window.requestAnimationFrame(() => {
+          document.getElementById("work")?.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+        });
+      });
+    }
+
+    if (window.location.hash === "#top") {
+      window.requestAnimationFrame(() => {
+        window.requestAnimationFrame(() => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+      });
+    }
+  }, [activeProject]);
+
   const openProject = (slug) => {
-    window.location.hash = `project/${slug}`;
+    window.history.pushState(null, "", `#project/${slug}`);
+    setActiveProject(slug);
+    window.scrollTo({ top: 0, behavior: "auto" });
   };
 
   const closeProject = () => {
-    setActiveProject(null);
+    // First render the desk again, then scroll to its Work section.
     window.history.pushState(null, "", "#work");
-
-    window.requestAnimationFrame(() => {
-      document.getElementById("work")?.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
-    });
+    setActiveProject(null);
   };
 
   const goToDesk = () => {
-    setActiveProject(null);
     window.history.pushState(null, "", "#top");
-    window.requestAnimationFrame(() => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
+    setActiveProject(null);
   };
-
 
   if (activeProject && PROJECTS[activeProject]) {
     const project = PROJECTS[activeProject];
