@@ -126,11 +126,11 @@ function App() {
 
     return (
       <main className="project-detail-page">
-        <button type="button" className="desk-tab detail-back" onClick={closeProject}>
-          <span aria-hidden="true">←</span> DESK
-        </button>
-
         <div className="project-detail-paper">
+          <button type="button" className="project-collection-link" onClick={closeProject}>
+            <span aria-hidden="true">←</span> EXPLORE MORE WORK
+          </button>
+
           <div className="project-detail-topline">
             <span>{project.number}</span>
             <span>{project.kicker}</span>
@@ -143,10 +143,6 @@ function App() {
             </div>
             <div className="project-detail-result">{project.result}</div>
           </div>
-
-          <nav className="project-detail-nav" aria-label="Project navigation">
-            <button type="button" onClick={closeProject}>← ALL PROJECTS</button>
-          </nav>
 
           <div className="project-detail-grid">
             <article className="project-detail-main">
