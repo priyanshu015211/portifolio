@@ -2714,39 +2714,73 @@ main > .section:target .section-heading h2 {
 }
 
 
-/* Whole project block is the interactive target */
+/* Whole project card is the interactive target */
 .project-clickable {
   cursor: pointer;
   transition:
-    transform 260ms cubic-bezier(.2,.75,.2,1),
-    background-color 260ms ease,
-    box-shadow 260ms ease;
+    transform 240ms cubic-bezier(.2,.75,.2,1),
+    background-color 240ms ease,
+    box-shadow 240ms ease;
   border-radius: 2px;
 }
 
 .project-clickable:hover,
 .project-clickable:focus-visible {
   transform: translateY(-4px);
-  background: rgba(255,255,255,0.30);
-  box-shadow: 0 12px 34px rgba(24,45,97,0.07);
+  background: rgba(255,255,255,0.32);
+  box-shadow: 0 14px 34px rgba(24,45,97,0.07);
   outline: none;
 }
 
 .project-clickable:focus-visible {
   box-shadow:
-    0 0 0 2px rgba(24,45,97,0.18),
-    0 12px 34px rgba(24,45,97,0.07);
+    0 0 0 2px rgba(24,45,97,0.16),
+    0 14px 34px rgba(24,45,97,0.07);
 }
 
 .project-open {
   pointer-events: none;
 }
 
-.project-result sup,
-.project-detail-result sup,
-.project-detail-paper sup {
-  position: relative;
-  top: -0.35em;
-  font-size: 0.62em;
-  line-height: 0;
+.project-result {
+  max-width: 220px;
+  text-align: right;
+  font-size: 10px;
+  line-height: 1.35;
+  letter-spacing: 0.05em;
+}
+
+
+/* Back from a project directly to the Selected Work collection */
+.project-detail-nav {
+  padding-left: 26px;
+  margin: 12px 0 22px;
+}
+
+.project-detail-nav button {
+  appearance: none;
+  border: 1px solid rgba(24,45,97,0.2);
+  background: rgba(255,255,255,0.48);
+  color: var(--ink);
+  padding: 10px 14px;
+  font: inherit;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  transition: transform 200ms ease, background-color 200ms ease;
+}
+
+.project-detail-nav button:hover {
+  transform: translateX(-3px);
+  background: rgba(255,255,255,0.8);
+}
+
+.desk-tab.detail-back {
+  transition: transform 200ms ease, background-color 200ms ease;
+}
+
+.desk-tab.detail-back:hover {
+  transform: translateX(3px);
+  background: rgba(255,255,255,1);
 }
