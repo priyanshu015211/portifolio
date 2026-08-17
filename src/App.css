@@ -2862,3 +2862,14 @@ main > .section:target .section-heading h2 {
     margin-left: 22px;
   }
 }
+
+
+/* Dedicated Selected Work route */
+.work-page {
+  min-height: 100vh;
+}
+
+.work-page-back {
+  z-index: 20;
+  cursor: pointer;
+}
