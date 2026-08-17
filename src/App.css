@@ -2957,22 +2957,30 @@ main > .section:target .section-heading h2 {
   transform-origin: center;
 }
 
-.section-highlight--
-
-.section-highlight--
-
-.section-highlight--
-
-.section-highlight--
-
-.section-highlight--
-
-/* All section title highlights use one consistent notebook-blue marker. */
-.section-highlight--blue::after,
-.section-highlight--green::after,
-.section-highlight--lavender::after,
-.section-highlight--amber::after,
-.section-highlight--rose::after {
-  background: #cbd9f2;
-  transform: rotate(-0.6deg);
+/* Each section keeps its own accent, and BOTH marker strokes use that
+   exact same color so the layered highlight looks intentional. */
+.section-heading h2:has(.section-highlight--green)::before,
+.section-heading h2:has(.section-highlight--green) .section-highlight::after {
+  background: #dfeecb;
 }
+
+.section-heading h2:has(.section-highlight--blue)::before,
+.section-heading h2:has(.section-highlight--blue) .section-highlight::after {
+  background: #cbd9f2;
+}
+
+.section-heading h2:has(.section-highlight--lavender)::before,
+.section-heading h2:has(.section-highlight--lavender) .section-highlight::after {
+  background: #ded7f0;
+}
+
+.section-heading h2:has(.section-highlight--amber)::before,
+.section-heading h2:has(.section-highlight--amber) .section-highlight::after {
+  background: #f0dfb6;
+}
+
+.section-heading h2:has(.section-highlight--rose)::before,
+.section-heading h2:has(.section-highlight--rose) .section-highlight::after {
+  background: #f1cfd1;
+}
+
