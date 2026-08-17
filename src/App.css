@@ -3297,3 +3297,15 @@ main > .section:target .section-heading h2 {
     margin-left: 14px;
   }
 }
+
+
+/* Book hover: slightly more open (~40–45%) while keeping the cover dominant. */
+.portfolio-book:hover .book-page,
+.portfolio-book:hover .page,
+.portfolio-book:hover .book-inner {
+  transform: translateX(40%);
+}
+
+.portfolio-book:hover {
+  transform: translateY(-8px) rotateY(-22deg);
+}
