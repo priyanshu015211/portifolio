@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=Caveat:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap");
- 
+
 /* =========================================================
    VARIABLES
 ========================================================= */
@@ -3303,9 +3303,30 @@ main > .section:target .section-heading h2 {
 .portfolio-book:hover .book-page,
 .portfolio-book:hover .page,
 .portfolio-book:hover .book-inner {
-  transform: translateX(40%);
+  transform: translateX(45%);
 }
 
 .portfolio-book:hover {
-  transform: translateY(-8px) rotateY(-22deg);
+  transform: translateY(-14px) rotateY(-22deg);
+}
+
+
+/* Slight hover "jump" for the books — playful, but restrained. */
+.portfolio-book:hover {
+  animation: bookHoverJump 520ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes bookHoverJump {
+  0% {
+    transform: translateY(0) rotateY(0deg);
+  }
+  45% {
+    transform: translateY(-16px) rotateY(-22deg);
+  }
+  72% {
+    transform: translateY(-11px) rotateY(-22deg);
+  }
+  100% {
+    transform: translateY(-14px) rotateY(-22deg);
+  }
 }
