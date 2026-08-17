@@ -2929,3 +2929,55 @@ main > .section:target .section-heading h2 {
     padding: 55px 25px 75px;
   }
 }
+
+
+/* Muted marker highlights for section titles */
+.section-heading h2 {
+  position: relative;
+  display: inline-block;
+  z-index: 0;
+}
+
+.section-highlight {
+  position: relative;
+  display: inline;
+  isolation: isolate;
+}
+
+.section-highlight::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: -0.035em;
+  right: -0.06em;
+  bottom: 0.10em;
+  height: 0.38em;
+  border-radius: 0.06em 0.02em 0.07em 0.03em;
+  opacity: 0.78;
+  transform-origin: center;
+}
+
+.section-highlight--blue::after {
+  background: #cbd9f2;
+  transform: rotate(-0.8deg);
+}
+
+.section-highlight--green::after {
+  background: #d9e8b7;
+  transform: rotate(0.45deg);
+}
+
+.section-highlight--lavender::after {
+  background: #ddd4ed;
+  transform: rotate(-0.5deg);
+}
+
+.section-highlight--amber::after {
+  background: #f0ddb1;
+  transform: rotate(0.7deg);
+}
+
+.section-highlight--rose::after {
+  background: #efd0d5;
+  transform: rotate(-0.6deg);
+}
