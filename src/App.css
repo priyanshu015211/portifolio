@@ -2862,3 +2862,70 @@ main > .section:target .section-heading h2 {
     margin-left: 22px;
   }
 }
+
+
+/* Dedicated Selected Work route */
+.work-page {
+  min-height: 100vh;
+}
+
+.work-page-back {
+  z-index: 20;
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   ROUTE-BASED SELECTED WORK PAGE
+   The original site hides sections until their hash is targeted.
+   /work is now a real route, so its section must be visible without
+   relying on :target.
+========================================================= */
+
+.work-page main > .section {
+  display: block;
+  box-sizing: border-box;
+  width: min(1180px, calc(100% - 130px));
+  min-height: calc(100vh - 42px);
+  max-width: none;
+  margin: 0 36px 40px 91px;
+  padding: 72px clamp(30px, 7vw, 100px) 100px;
+  border: 1px solid var(--border);
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 43px,
+      rgba(89, 137, 179, 0.11) 44px,
+      transparent 45px
+    ),
+    var(--paper);
+  box-shadow: 0 18px 45px rgba(20, 41, 85, 0.08);
+  animation: pageEnter 0.55s cubic-bezier(0.22, 0.8, 0.2, 1) both;
+}
+
+.work-page .projects-section {
+  padding-top: 72px;
+  padding-bottom: 100px;
+}
+
+.work-page .page-back {
+  display: inline-flex;
+}
+
+@media (max-width: 900px) {
+  .work-page main > .section {
+    width: calc(100% - 50px);
+    margin-left: 25px;
+    margin-right: 25px;
+  }
+}
+
+@media (max-width: 600px) {
+  .work-page main > .section {
+    width: calc(100% - 50px);
+    margin-left: 25px;
+    margin-right: 25px;
+    padding: 55px 25px 75px;
+  }
+}
