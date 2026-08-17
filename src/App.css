@@ -2658,19 +2658,6 @@ main > .section:target .section-heading h2 {
   transform: translateX(5px);
 }
 
-.desk-tab.detail-back {
-  position: fixed;
-  left: 0;
-  top: 18px;
-  z-index: 50;
-  border: 1px solid rgba(24,45,97,0.20);
-  border-left: 0;
-  background: rgba(252,250,245,0.96);
-  padding: 11px 17px 11px 13px;
-  color: var(--ink);
-  box-shadow: 0 8px 22px rgba(24,45,97,0.06);
-  cursor: pointer;
-}
 
 @keyframes notebookPageIn {
   0% {
@@ -2780,7 +2767,48 @@ main > .section:target .section-heading h2 {
   transition: transform 200ms ease, background-color 200ms ease;
 }
 
-.desk-tab.detail-back:hover {
-  transform: translateX(3px);
-  background: rgba(255,255,255,1);
+
+
+/* =========================================================
+   PROJECT OVERVIEW -> WORK COLLECTION
+========================================================= */
+
+.project-collection-link {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: -14px 0 28px 26px;
+  padding: 7px 0 6px;
+  border: 0;
+  border-bottom: 1px solid rgba(24,45,97,0.34);
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 210ms ease, letter-spacing 210ms ease, border-color 210ms ease;
+}
+
+.project-collection-link:hover {
+  transform: translateX(4px);
+  letter-spacing: 0.17em;
+  border-color: var(--ink);
+}
+
+.project-collection-link span {
+  transition: transform 210ms ease;
+}
+
+.project-collection-link:hover span {
+  transform: translateX(-3px);
+}
+
+/* The collection control belongs inside the notebook paper, above 01/02/03/04. */
+.project-detail-paper .project-collection-link {
+  align-self: flex-start;
 }
