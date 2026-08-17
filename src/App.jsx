@@ -96,7 +96,12 @@ function App() {
 
     readHash();
     window.addEventListener("hashchange", readHash);
-    return () => window.removeEventListener("hashchange", readHash);
+    window.addEventListener("popstate", readHash);
+
+    return () => {
+      window.removeEventListener("hashchange", readHash);
+      window.removeEventListener("popstate", readHash);
+    };
   }, []);
 
   const openProject = (slug) => {
@@ -104,7 +109,15 @@ function App() {
   };
 
   const closeProject = () => {
-    window.location.hash = "work";
+    setActiveProject(null);
+    window.history.pushState(null, "", "#work");
+
+    window.requestAnimationFrame(() => {
+      document.getElementById("work")?.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    });
   };
 
 
@@ -130,6 +143,10 @@ function App() {
             </div>
             <div className="project-detail-result">{project.result}</div>
           </div>
+
+          <nav className="project-detail-nav" aria-label="Project navigation">
+            <button type="button" onClick={closeProject}>← ALL PROJECTS</button>
+          </nav>
 
           <div className="project-detail-grid">
             <article className="project-detail-main">
