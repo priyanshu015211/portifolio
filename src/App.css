@@ -2712,3 +2712,41 @@ main > .section:target .section-heading h2 {
     animation: none;
   }
 }
+
+
+/* Whole project block is the interactive target */
+.project-clickable {
+  cursor: pointer;
+  transition:
+    transform 260ms cubic-bezier(.2,.75,.2,1),
+    background-color 260ms ease,
+    box-shadow 260ms ease;
+  border-radius: 2px;
+}
+
+.project-clickable:hover,
+.project-clickable:focus-visible {
+  transform: translateY(-4px);
+  background: rgba(255,255,255,0.30);
+  box-shadow: 0 12px 34px rgba(24,45,97,0.07);
+  outline: none;
+}
+
+.project-clickable:focus-visible {
+  box-shadow:
+    0 0 0 2px rgba(24,45,97,0.18),
+    0 12px 34px rgba(24,45,97,0.07);
+}
+
+.project-open {
+  pointer-events: none;
+}
+
+.project-result sup,
+.project-detail-result sup,
+.project-detail-paper sup {
+  position: relative;
+  top: -0.35em;
+  font-size: 0.62em;
+  line-height: 0;
+}
