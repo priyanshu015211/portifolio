@@ -120,6 +120,14 @@ function App() {
     });
   };
 
+  const goToDesk = () => {
+    setActiveProject(null);
+    window.history.pushState(null, "", "#top");
+    window.requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  };
+
 
   if (activeProject && PROJECTS[activeProject]) {
     const project = PROJECTS[activeProject];
@@ -127,9 +135,14 @@ function App() {
     return (
       <main className="project-detail-page">
         <div className="project-detail-paper">
-          <button type="button" className="project-collection-link" onClick={closeProject}>
-            <span aria-hidden="true">←</span> EXPLORE MORE WORK
-          </button>
+          <div className="project-nav-actions">
+            <button type="button" className="project-collection-link" onClick={closeProject}>
+              <span aria-hidden="true">←</span> EXPLORE MORE WORK
+            </button>
+            <button type="button" className="project-desk-link" onClick={goToDesk}>
+              DESK ↗
+            </button>
+          </div>
 
           <div className="project-detail-topline">
             <span>{project.number}</span>
