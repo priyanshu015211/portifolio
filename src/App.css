@@ -2984,3 +2984,316 @@ main > .section:target .section-heading h2 {
   background: #f1cfd1;
 }
 
+
+
+/* =========================================================
+   DESK BOOK PEEK — 30–35% OPEN
+   ========================================================= */
+
+.portfolio-book {
+  transition:
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.portfolio-book:hover,
+.portfolio-book:focus-visible {
+  transform: translateY(-11px) rotate(0deg);
+}
+
+.portfolio-book .book-cover {
+  transition:
+    transform 0.68s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.42s ease;
+}
+
+.portfolio-book:hover .book-cover,
+.portfolio-book:focus-visible .book-cover {
+  /* ~35% of the previous 134° opening */
+  transform: rotateY(-48deg) translateZ(0);
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.15),
+    4px 5px 0 var(--book-cover-dark);
+}
+
+.portfolio-book:hover .cover-content,
+.portfolio-book:focus-visible .cover-content {
+  opacity: 0.72;
+}
+
+.book-pages {
+  padding: 16px 18px 16px 28px;
+}
+
+.book-pages span {
+  font-size: 8px;
+  letter-spacing: 0.16em;
+}
+
+.book-pages small {
+  font-size: 20px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-book,
+  .portfolio-book .book-cover {
+    transition: none;
+  }
+}
+
+/* =========================================================
+   EXPERIENCE OVERVIEW — CAREER FILE
+   ========================================================= */
+
+.experience-overview-section {
+  width: min(1120px, calc(100% - 70px));
+  margin: 40px auto 90px;
+  padding: 70px 76px 80px;
+  border: 1px solid var(--line);
+  border-left: 3px solid #c58f36;
+  background: rgba(255, 254, 249, 0.72);
+  box-shadow: 0 24px 55px rgba(24, 45, 97, 0.07);
+}
+
+.experience-overview-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 72px;
+}
+
+.experience-number,
+.experience-kicker {
+  color: var(--ink);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+}
+
+.experience-overview-title {
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 48px;
+}
+
+.experience-overview-title .project-file-label {
+  margin: 0 0 20px;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+}
+
+.experience-overview-title h1 {
+  margin: 0;
+  max-width: 900px;
+  color: var(--ink);
+  font-family: "Caveat", cursive;
+  font-size: clamp(64px, 8vw, 108px);
+  font-weight: 600;
+  line-height: 0.86;
+}
+
+.experience-overview-title h1 span {
+  display: block;
+  margin-left: 12%;
+}
+
+.experience-overview-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 290px;
+  gap: 70px;
+  align-items: end;
+  padding: 50px 0 62px;
+  border-bottom: 1px solid var(--line);
+}
+
+.experience-overview-intro > p {
+  max-width: 700px;
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(23px, 2.4vw, 34px);
+  line-height: 1.38;
+}
+
+.experience-overview-note {
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  background: #f0dfb6;
+  transform: rotate(-1deg);
+}
+
+.experience-overview-note span,
+.career-file-label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+}
+
+.experience-overview-note strong {
+  color: var(--ink);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.career-file-list {
+  margin-top: 12px;
+}
+
+.career-file-item {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  gap: 55px;
+  padding: 55px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.career-file-item--featured {
+  padding-top: 58px;
+}
+
+.career-file-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  padding-top: 7px;
+  color: var(--muted);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.career-file-meta span:first-child {
+  color: var(--ink);
+  font-size: 14px;
+}
+
+.career-file-main h2 {
+  margin: 0;
+  color: var(--ink);
+  font-family: "Caveat", cursive;
+  font-size: clamp(38px, 4.5vw, 60px);
+  font-weight: 600;
+  line-height: 0.95;
+}
+
+.career-file-main h3 {
+  margin: 9px 0 24px;
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.career-file-main > p:not(.career-file-label) {
+  max-width: 760px;
+  margin: 0;
+  color: var(--text);
+  font-size: 17px;
+  line-height: 1.75;
+}
+
+.career-file-main strong {
+  color: var(--ink);
+}
+
+.career-file-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 24px;
+}
+
+.career-file-tags span {
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  font-size: 11px;
+}
+
+.career-file-bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 70px;
+  padding-top: 55px;
+}
+
+.career-file-bottom h2 {
+  margin: 0;
+  color: var(--ink);
+  font-family: "Caveat", cursive;
+  font-size: 38px;
+  font-weight: 600;
+}
+
+.career-file-bottom p {
+  margin: 0;
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.experience-page-back {
+  position: relative;
+  z-index: 10;
+  margin: 20px 0 0 32px;
+}
+
+@media (max-width: 800px) {
+  .experience-overview-section {
+    width: calc(100% - 36px);
+    padding: 48px 28px 60px;
+  }
+
+  .experience-overview-top,
+  .experience-overview-intro,
+  .career-file-bottom {
+    grid-template-columns: 1fr;
+  }
+
+  .experience-overview-top {
+    align-items: flex-start;
+    flex-direction: column;
+    margin-bottom: 52px;
+  }
+
+  .experience-overview-intro {
+    display: grid;
+    gap: 30px;
+  }
+
+  .career-file-item {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .experience-overview-title h1 span {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .portfolio-book:hover .book-cover,
+  .portfolio-book:focus-visible .book-cover {
+    transform: rotateY(-42deg) translateZ(0);
+  }
+
+  .experience-overview-section {
+    margin-top: 25px;
+    width: calc(100% - 24px);
+    padding: 38px 20px 48px;
+  }
+
+  .experience-overview-title h1 {
+    font-size: 58px;
+  }
+
+  .experience-overview-intro > p {
+    font-size: 23px;
+  }
+
+  .experience-page-back {
+    margin-left: 14px;
+  }
+}
