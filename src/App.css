@@ -2850,7 +2850,6 @@ main > .section:target .section-heading h2 {
   transition: transform 210ms ease, letter-spacing 210ms ease, border-color 210ms ease;
 }
 
-
 .project-desk-link:hover {
   transform: translateX(3px);
   letter-spacing: 0.17em;
