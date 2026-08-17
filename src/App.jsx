@@ -17,8 +17,8 @@ function App() {
 
 
       <main id="top">
-        <a href="#top" className="page-back" aria-label="Back to home">
-          ← Back to desk
+        <a href="#top" className="page-back" aria-label="Back to desk">
+          ← DESK
         </a>
 
         {/* =====================================================
@@ -39,8 +39,8 @@ function App() {
 <section className="notebook-section" aria-label="Portfolio sections">
 
           <div className="notebook-heading">
-            <span className="notebook-kicker">MY NOTEBOOK</span>
-            <p>Hover a book to open it · click to read</p>
+            <span className="notebook-kicker">OPEN A CHAPTER</span>
+            <p>Click a book to explore.</p>
           </div>
 
           <div className="book-shelf">
@@ -176,7 +176,7 @@ function App() {
               href="#work"
               className="view-work-btn"
             >
-              View my work →
+              SEE WHAT I BUILD →
             </a>
 
             <a
@@ -185,7 +185,7 @@ function App() {
               rel="noreferrer"
               className="button secondary"
             >
-              Resume
+              RESUME ↗
             </a>
 
           </div>
