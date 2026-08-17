@@ -214,7 +214,7 @@ function SelectedWorkPage() {
             <span>02</span>
 
             <h2>
-              Selected work
+              <span className="section-highlight section-highlight--green">Selected work</span>
             </h2>
 
           </div>
@@ -737,7 +737,7 @@ function DeskPage() {
             <span>01</span>
 
             <h2>
-              About me
+              <span className="section-highlight section-highlight--blue">About me</span>
             </h2>
 
           </div>
@@ -842,7 +842,7 @@ function DeskPage() {
             <span>03</span>
 
             <h2>
-              Skills
+              <span className="section-highlight section-highlight--lavender">Skills</span>
             </h2>
 
           </div>
@@ -1007,7 +1007,7 @@ function DeskPage() {
     <span>04</span>
 
     <h2>
-      Experience & Achievement
+      <span className="section-highlight section-highlight--amber">Experience & Achievement</span>
     </h2>
 
   </div>
@@ -1147,7 +1147,7 @@ function DeskPage() {
     <span>05</span>
 
     <h2>
-      Let's build something.
+      <span className="section-highlight section-highlight--rose">Let's build something.</span>
     </h2>
   </div>
 
