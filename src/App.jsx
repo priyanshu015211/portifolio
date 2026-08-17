@@ -1,6 +1,184 @@
+import { useEffect, useState } from "react";
 import "./App.css";
 
+
+const PROJECTS = {
+  "uac-capacity-monitor": {
+    number: "01",
+    title: "UAC Capacity Monitor",
+    kicker: "MACHINE LEARNING · FORECASTING · ANALYTICS",
+    intro: "A healthcare analytics and forecasting platform for monitoring operational capacity and predicting future demand.",
+    overview: "I built a Streamlit-based analytics product that turns operational data into an interactive capacity-monitoring workflow. The project combines validation, exploratory analysis, machine learning, forecasting and executive-facing summaries in one interface.",
+    bullets: [
+      "Random Forest and Prophet forecasting models",
+      "30 / 60 / 90 day forecasting horizons",
+      "Lag and rolling-statistic feature engineering",
+      "MAE, RMSE, MAPE and R² evaluation",
+      "Capacity stress / relief period analysis",
+      "Interactive KPI monitoring and anomaly checks"
+    ],
+    result: "R² = 0.969",
+    stack: "Python · Pandas · NumPy · Scikit-learn · Prophet · Streamlit · Plotly",
+    links: [
+      { label: "LIVE PROJECT", href: "https://priyanshu-uac-capacity-monitor.streamlit.app/" }
+    ]
+  },
+  "ai-developer-career-intelligence": {
+    number: "02",
+    title: "AI Developer Career Intelligence Platform",
+    kicker: "AI · DEVELOPER TOOLS · PRODUCT",
+    intro: "An AI-powered platform that analyzes GitHub repositories to generate developer skill insights, career-readiness scores and personalized recommendations.",
+    overview: "The platform is designed as a developer intelligence layer: it reads public GitHub signals, turns them into structured evidence of skills and project quality, and presents that evidence as actionable career guidance.",
+    bullets: [
+      "GitHub profile and repository analysis",
+      "Skill extraction from code and project metadata",
+      "Career-readiness scoring",
+      "Project quality and coding-pattern insights",
+      "Personalized recommendations",
+      "React + FastAPI product architecture"
+    ],
+    result: "CURRENTLY BUILDING",
+    stack: "React · FastAPI · PostgreSQL · Python · OpenAI API",
+    links: [
+      { label: "GITHUB", href: "https://github.com/priyanshu015211" }
+    ]
+  },
+  "aegiscare": {
+    number: "03",
+    title: "AegisCare",
+    kicker: "HEALTHCARE · AI · FULL STACK",
+    intro: "An AI-powered healthcare platform focused on improving accessibility through intelligent patient assistance and healthcare management.",
+    overview: "AegisCare explores how an AI-first product can reduce friction in healthcare workflows. The project combines a modern frontend, API layer and database architecture around a patient-focused experience.",
+    bullets: [
+      "AI-assisted healthcare workflow",
+      "React frontend and FastAPI backend",
+      "PostgreSQL data layer",
+      "Patient-focused product experience",
+      "API-first application architecture",
+      "Healthcare + AI product design"
+    ],
+    result: "HEALTHCARE × AI",
+    stack: "React · FastAPI · PostgreSQL · Python",
+    links: [
+      { label: "GITHUB", href: "https://github.com/priyanshu015211/AegisCare" }
+    ]
+  },
+  "human-activity-recognition": {
+    number: "04",
+    title: "Human Activity Recognition",
+    kicker: "MACHINE LEARNING · SENSOR DATA",
+    intro: "A wearable-sensor classification project that predicts human activity from mobile health data.",
+    overview: "I worked with wearable sensor data to build a classification workflow, preparing the data, training a K-Nearest Neighbors model and evaluating it on unseen samples.",
+    bullets: [
+      "Wearable sensor / mobile health dataset",
+      "Feature preparation and exploratory analysis",
+      "K-Nearest Neighbors classification",
+      "Model evaluation on held-out data",
+      "97.11% reported accuracy"
+    ],
+    result: "97.11% ACCURACY",
+    stack: "Python · Pandas · NumPy · Scikit-learn · KNN",
+    links: [
+      { label: "GITHUB", href: "https://github.com/priyanshu015211/human-behavior-classification" }
+    ]
+  }
+};
+
 function App() {
+
+  const [activeProject, setActiveProject] = useState(null);
+
+  useEffect(() => {
+    const readHash = () => {
+      const match = window.location.hash.match(/^#project\/(.+)$/);
+      setActiveProject(match ? decodeURIComponent(match[1]) : null);
+    };
+
+    readHash();
+    window.addEventListener("hashchange", readHash);
+    return () => window.removeEventListener("hashchange", readHash);
+  }, []);
+
+  const openProject = (slug) => {
+    window.location.hash = `project/${slug}`;
+  };
+
+  const closeProject = () => {
+    window.location.hash = "work";
+  };
+
+
+  if (activeProject && PROJECTS[activeProject]) {
+    const project = PROJECTS[activeProject];
+
+    return (
+      <main className="project-detail-page">
+        <button type="button" className="desk-tab detail-back" onClick={closeProject}>
+          <span aria-hidden="true">←</span> DESK
+        </button>
+
+        <div className="project-detail-paper">
+          <div className="project-detail-topline">
+            <span>{project.number}</span>
+            <span>{project.kicker}</span>
+          </div>
+
+          <div className="project-detail-title-row">
+            <div>
+              <p className="project-detail-label">PROJECT FILE</p>
+              <h1>{project.title}</h1>
+            </div>
+            <div className="project-detail-result">{project.result}</div>
+          </div>
+
+          <div className="project-detail-grid">
+            <article className="project-detail-main">
+              <p className="project-detail-intro">{project.intro}</p>
+
+              <section>
+                <h2>Overview</h2>
+                <p>{project.overview}</p>
+              </section>
+
+              <section>
+                <h2>What I built</h2>
+                <div className="project-detail-list">
+                  {project.bullets.map((item) => (
+                    <div key={item} className="project-detail-item">
+                      <span aria-hidden="true">✳</span>
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            </article>
+
+            <aside className="project-detail-side">
+              <div className="project-note">
+                <span>TECH STACK</span>
+                <p>{project.stack}</p>
+              </div>
+
+              <div className="project-note project-note--accent">
+                <span>OUTCOME</span>
+                <strong>{project.result}</strong>
+              </div>
+
+              <div className="project-detail-links">
+                {project.links.map((link) => (
+                  <a key={link.href} href={link.href} target="_blank" rel="noreferrer">
+                    {link.label} <span>↗</span>
+                  </a>
+                ))}
+              </div>
+            </aside>
+          </div>
+        </div>
+      </main>
+    );
+  }
+
+
   return (
     <div className="page">
 
@@ -158,9 +336,9 @@ function App() {
           </div>
 
           <div className="book-instruction">
-            <span>HOVER TO OPEN</span>
+            <span>CHOOSE A CHAPTER</span>
             <span>·</span>
-            <span>CLICK TO READ</span>
+            <span>CLICK TO EXPLORE</span>
           </div>
 
         </section>
@@ -174,7 +352,7 @@ function App() {
 
             <a
               href="#work"
-              className="view-work-btn"
+              className="hero-action hero-action--primary"
             >
               SEE WHAT I BUILD →
             </a>
@@ -183,7 +361,7 @@ function App() {
               href="/resume.pdf"
               target="_blank"
               rel="noreferrer"
-              className="button secondary"
+              className="hero-action hero-action--resume"
             >
               RESUME ↗
             </a>
@@ -382,14 +560,14 @@ function App() {
                     UAC Capacity Monitor
                   </h3>
 
-                  <a
-                    href="https://priyanshu-uac-capacity-monitor.streamlit.app/"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="project-link"
+                  <button
+                    type="button"
+                    className="project-link project-open"
+                    onClick={() => openProject("uac-capacity-monitor")}
                   >
-                    Live project ↗
-                  </a>
+                    <span>Open project</span>
+                    <span aria-hidden="true">↗</span>
+                  </button>
 
                 </div>
 
@@ -448,14 +626,14 @@ function App() {
                     AI Developer Career Intelligence Platform
                   </h3>
 
-                  <a
-                    href="https://github.com/priyanshu015211"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="project-link"
+                  <button
+                    type="button"
+                    className="project-link project-open"
+                    onClick={() => openProject("ai-developer-career-intelligence")}
                   >
-                    GitHub ↗
-                  </a>
+                    <span>Open project</span>
+                    <span aria-hidden="true">↗</span>
+                  </button>
 
                 </div>
 
@@ -515,14 +693,14 @@ function App() {
                     AegisCare
                   </h3>
 
-                  <a
-                    href="https://github.com/priyanshu015211/AegisCare"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="project-link"
+                  <button
+                    type="button"
+                    className="project-link project-open"
+                    onClick={() => openProject("aegiscare")}
                   >
-                    GitHub ↗
-                  </a>
+                    <span>Open project</span>
+                    <span aria-hidden="true">↗</span>
+                  </button>
 
                 </div>
 
@@ -581,14 +759,14 @@ function App() {
                     Human Activity Recognition
                   </h3>
 
-                  <a
-                    href="https://github.com/priyanshu015211/human-behavior-classification"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="project-link"
+                  <button
+                    type="button"
+                    className="project-link project-open"
+                    onClick={() => openProject("human-activity-recognition")}
                   >
-                    GitHub ↗
-                  </a>
+                    <span>Open project</span>
+                    <span aria-hidden="true">↗</span>
+                  </button>
 
                 </div>
 
