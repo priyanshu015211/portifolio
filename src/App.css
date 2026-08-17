@@ -2812,3 +2812,53 @@ main > .section:target .section-heading h2 {
 .project-detail-paper .project-collection-link {
   align-self: flex-start;
 }
+
+/* Project overview intro: ~15% smaller for better balance */
+.project-detail-intro {
+  font-size: clamp(17px, 1.87vw, 25px);
+}
+
+
+/* Project overview navigation */
+.project-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin: -14px 0 30px 26px;
+  padding-left: 0;
+}
+
+.project-collection-link {
+  margin: 0;
+}
+
+.project-desk-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 0 6px;
+  border: 0;
+  border-bottom: 1px solid rgba(24,45,97,0.24);
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 210ms ease, letter-spacing 210ms ease, border-color 210ms ease;
+}
+
+.project-desk-link:hover {
+  transform: translateX(3px);
+  letter-spacing: 0.17em;
+  border-color: var(--ink);
+}
+
+@media (max-width: 700px) {
+  .project-nav-actions {
+    gap: 16px;
+    margin-left: 22px;
+  }
+}
