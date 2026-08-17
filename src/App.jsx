@@ -1,5 +1,6 @@
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import "./App.css";
+import { Analytics } from '@vercel/analytics/react';
 
 const PROJECTS = {
   "uac-capacity-monitor": {
@@ -1219,6 +1220,7 @@ function DeskPage() {
 
       </footer>
 
+      <Analytics />
     </div>
   );
 }
