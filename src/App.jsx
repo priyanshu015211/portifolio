@@ -1,5 +1,7 @@
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./App.css";
+
 
 const PROJECTS = {
   "uac-capacity-monitor": {
@@ -84,32 +86,34 @@ const PROJECTS = {
 };
 
 
-function ProjectDetailPage() {
-  const { pathname } = useLocation();
+function App() {
+  const location = useLocation();
   const navigate = useNavigate();
-  const match = pathname.match(/^\/work\/([^/]+)$/);
-  const slug = match ? decodeURIComponent(match[1]) : null;
-  const project = slug ? PROJECTS[slug] : null;
 
-  if (!project) {
+  const projectMatch = location.pathname.match(/^\/work\/([^/]+)$/);
+  const activeProject = projectMatch ? decodeURIComponent(projectMatch[1]) : null;
+
+  useEffect(() => {
+    if (location.pathname === "/work") {
+      window.requestAnimationFrame(() => {
+        window.requestAnimationFrame(() => {
+          document.getElementById("selected-work")?.scrollIntoView({
+            behavior: "auto",
+            block: "start"
+          });
+        });
+      });
+    } else if (location.pathname === "/") {
+      window.requestAnimationFrame(() => {
+        window.scrollTo({ top: 0, behavior: "auto" });
+      });
+    }
+  }, [location.pathname]);
+
+  if (activeProject && PROJECTS[activeProject]) {
+    const project = PROJECTS[activeProject];
+
     return (
-      <main className="project-detail-page">
-        <div className="project-detail-paper">
-          <div className="project-nav-actions">
-            <button type="button" className="project-collection-link" onClick={() => navigate("/work")}>
-              <span aria-hidden="true">←</span> EXPLORE MORE WORK
-            </button>
-            <button type="button" className="project-desk-link" onClick={() => navigate("/")}>
-              DESK ↗
-            </button>
-          </div>
-          <h1>Project not found</h1>
-        </div>
-      </main>
-    );
-  }
-
-  return (
       <main className="project-detail-page">
         <div className="project-detail-paper">
           <div className="project-nav-actions">
@@ -178,32 +182,346 @@ function ProjectDetailPage() {
           </div>
         </div>
       </main>
-
-  );
-}
-
-
-
-function SelectedWorkPage() {
-  const navigate = useNavigate();
+    );
+  }
 
   return (
-    <div className="page work-page">
+    <div className="page">
+
+      {/* =====================================================
+          NAVIGATION
+      ===================================================== */}
+
       <header className="navbar">
-        <NavLink to="/" className="logo" aria-label="Back to desk">
+
+        <a href="#top" className="logo">
           PR.
-        </NavLink>
-      </header>
+        </a>
+</header>
 
-      <button
-        type="button"
-        className="page-back work-page-back"
-        onClick={() => navigate("/")}
-      >
-        ← DESK
-      </button>
 
-      <main>
+      <main id="top">
+        <a href="#top" className="page-back" aria-label="Back to desk">
+          ← DESK
+        </a>
+
+        {/* =====================================================
+            HERO
+        ===================================================== */}
+
+        <section className="hero">
+
+          <p className="eyebrow">
+            AI / ML ENGINEERING · SOFTWARE DEVELOPMENT
+          </p>
+
+          <h1>
+            Priyanshu
+            <span>Bhagat.</span>
+          </h1>
+
+<section className="notebook-section" aria-label="Portfolio sections">
+
+          <div className="notebook-heading">
+            <span className="notebook-kicker">OPEN A CHAPTER</span>
+            <p>Click a book to explore.</p>
+          </div>
+
+          <div className="book-shelf">
+
+            <a href="#about" className="portfolio-book book-blue" aria-label="Open About Me">
+              <div className="book">
+                <div className="book-pages">
+                  <span>ABOUT</span>
+                  <small>01</small>
+                </div>
+                <div className="book-spine">
+                  <span>ABOUT ME</span>
+                </div>
+                <div className="book-cover">
+                  <div className="spirals" aria-hidden="true">
+                    <i></i><i></i><i></i><i></i><i></i>
+                  </div>
+                  <div className="cover-content">
+                    <small>01</small>
+                    <strong>About<br />Me</strong>
+                    <em>notes on me</em>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <a href="/work" className="portfolio-book book-cream" aria-label="Open Selected Work">
+              <div className="book">
+                <div className="book-pages">
+                  <span>WORK</span>
+                  <small>02</small>
+                </div>
+                <div className="book-spine">
+                  <span>WORK</span>
+                </div>
+                <div className="book-cover">
+                  <div className="spirals" aria-hidden="true">
+                    <i></i><i></i><i></i><i></i><i></i>
+                  </div>
+                  <div className="cover-content">
+                    <small>02</small>
+                    <strong>Selected<br />Work</strong>
+                    <em>things I built</em>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <a href="#skills" className="portfolio-book book-green" aria-label="Open Skills">
+              <div className="book">
+                <div className="book-pages">
+                  <span>SKILLS</span>
+                  <small>03</small>
+                </div>
+                <div className="book-spine">
+                  <span>SKILLS</span>
+                </div>
+                <div className="book-cover">
+                  <div className="spirals" aria-hidden="true">
+                    <i></i><i></i><i></i><i></i><i></i>
+                  </div>
+                  <div className="cover-content">
+                    <small>03</small>
+                    <strong>My<br />Skills</strong>
+                    <em>tools &amp; systems</em>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <a href="#experience" className="portfolio-book book-yellow" aria-label="Open Experience">
+              <div className="book">
+                <div className="book-pages">
+                  <span>EXPERIENCE</span>
+                  <small>04</small>
+                </div>
+                <div className="book-spine">
+                  <span>EXPERIENCE</span>
+                </div>
+                <div className="book-cover">
+                  <div className="spirals" aria-hidden="true">
+                    <i></i><i></i><i></i><i></i><i></i>
+                  </div>
+                  <div className="cover-content">
+                    <small>04</small>
+                    <strong>Experience<br />Wins</strong>
+                    <em>what I've done</em>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <a href="#contact" className="portfolio-book book-red" aria-label="Open Contact">
+              <div className="book">
+                <div className="book-pages">
+                  <span>CONTACT</span>
+                  <small>05</small>
+                </div>
+                <div className="book-spine">
+                  <span>CONTACT</span>
+                </div>
+                <div className="book-cover">
+                  <div className="spirals" aria-hidden="true">
+                    <i></i><i></i><i></i><i></i><i></i>
+                  </div>
+                  <div className="cover-content">
+                    <small>05</small>
+                    <strong>Let's<br />Talk</strong>
+                    <em>find me here</em>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+          </div>
+
+          <div className="book-instruction">
+            <span>CHOOSE A CHAPTER</span>
+            <span>·</span>
+            <span>CLICK TO EXPLORE</span>
+          </div>
+
+        </section>
+
+          <p className="hero-description">
+            I build AI systems, machine learning applications and
+            software products that turn ideas into working products.
+          </p>
+
+          <div className="hero-buttons">
+
+            <a
+              href="/work"
+              className="hero-action hero-action--primary"
+            >
+              SEE WHAT I BUILD →
+            </a>
+
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noreferrer"
+              className="hero-action hero-action--resume"
+            >
+              RESUME ↗
+            </a>
+
+          </div>
+
+
+          <div className="hero-details">
+
+            <span>
+              Bengaluru, India
+            </span>
+
+            <span>
+              AI / ML Student
+            </span>
+
+            <div className="social-buttons">
+
+              <a
+                href="https://www.linkedin.com/in/priyanshu-bhagat-92238239a/"
+                target="_blank"
+                rel="noreferrer"
+                className="social-button"
+                aria-label="LinkedIn"
+              >
+                <img
+                  src="/linkedin.png"
+                  alt="LinkedIn"
+                />
+              </a>
+
+              <a
+                href="https://github.com/priyanshu015211"
+                target="_blank"
+                rel="noreferrer"
+                className="social-button"
+                aria-label="GitHub"
+              >
+                <img
+                  src="/github.png"
+                  alt="GitHub"
+                />
+              </a>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        {/* =====================================================
+            ABOUT
+        ===================================================== */}
+
+        <section
+          id="about"
+          className="section about-section"
+        >
+
+          <div className="section-heading">
+
+            <span>01</span>
+
+            <h2>
+              About me
+            </h2>
+
+          </div>
+
+
+          <div className="about-layout">
+
+            {/* LEFT */}
+
+            <div className="about-main">
+
+              <p className="about-intro">
+                I'm a B.Tech Artificial Intelligence & Machine
+                Learning student interested in building practical
+                AI and software systems.
+              </p>
+
+              <p>
+                My work sits between machine learning, backend
+                engineering and product development. I enjoy
+                taking an idea from a rough concept to something
+                people can actually use.
+              </p>
+
+              <p>
+                I'm currently focused on AI/ML engineering,
+                backend development and generative AI, while
+                continuing to strengthen my foundations in
+                software development.
+              </p>
+
+            </div>
+
+
+            {/* RIGHT */}
+
+            <div className="about-side">
+
+              <div className="about-detail">
+
+                <span className="detail-label">
+                  FOCUS
+                </span>
+
+                <span className="detail-value">
+                  AI / ML · GenAI
+                </span>
+
+              </div>
+
+
+              <div className="about-detail">
+
+                <span className="detail-label">
+                  EDUCATION
+                </span>
+
+                <span className="detail-value">
+                  B.Tech · AIML · Present
+                </span>
+
+              </div>
+
+
+              <div className="about-detail">
+
+                <span className="detail-label">
+                  BASED IN
+                </span>
+
+                <span className="detail-value">
+                  Bengaluru, India
+                </span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        {/* =====================================================
+            SELECTED WORK
+        ===================================================== */}
+
         <section
           id="selected-work"
           className="section projects-section"
@@ -478,354 +796,6 @@ function SelectedWorkPage() {
           </div>
 
         </section>
-      </main>
-    </div>
-  );
-}
-
-
-
-function DeskPage() {
-  const navigate = useNavigate();
-
-  return (
-    <div className="page">
-
-      {/* =====================================================
-          NAVIGATION
-      ===================================================== */}
-
-      <header className="navbar">
-
-        <a href="/" className="logo">
-          PR.
-        </a>
-</header>
-
-
-      <main id="top">
-        <a href="/" className="page-back" aria-label="Back to desk">
-          ← DESK
-        </a>
-
-        {/* =====================================================
-            HERO
-        ===================================================== */}
-
-        <section className="hero">
-
-          <p className="eyebrow">
-            AI / ML ENGINEERING · SOFTWARE DEVELOPMENT
-          </p>
-
-          <h1>
-            Priyanshu
-            <span>Bhagat.</span>
-          </h1>
-
-<section className="notebook-section" aria-label="Portfolio sections">
-
-          <div className="notebook-heading">
-            <span className="notebook-kicker">OPEN A CHAPTER</span>
-            <p>Click a book to explore.</p>
-          </div>
-
-          <div className="book-shelf">
-
-            <a href="#about" className="portfolio-book book-blue" aria-label="Open About Me">
-              <div className="book">
-                <div className="book-pages">
-                  <span>ABOUT</span>
-                  <small>01</small>
-                </div>
-                <div className="book-spine">
-                  <span>ABOUT ME</span>
-                </div>
-                <div className="book-cover">
-                  <div className="spirals" aria-hidden="true">
-                    <i></i><i></i><i></i><i></i><i></i>
-                  </div>
-                  <div className="cover-content">
-                    <small>01</small>
-                    <strong>About<br />Me</strong>
-                    <em>notes on me</em>
-                  </div>
-                </div>
-              </div>
-            </a>
-
-            <NavLink to="/work" className="portfolio-book book-cream" aria-label="Open Selected Work">
-              <div className="book">
-                <div className="book-pages">
-                  <span>WORK</span>
-                  <small>02</small>
-                </div>
-                <div className="book-spine">
-                  <span>WORK</span>
-                </div>
-                <div className="book-cover">
-                  <div className="spirals" aria-hidden="true">
-                    <i></i><i></i><i></i><i></i><i></i>
-                  </div>
-                  <div className="cover-content">
-                    <small>02</small>
-                    <strong>Selected<br />Work</strong>
-                    <em>things I built</em>
-                  </div>
-                </div>
-              </div>
-            </NavLink>
-
-            <a href="#skills" className="portfolio-book book-green" aria-label="Open Skills">
-              <div className="book">
-                <div className="book-pages">
-                  <span>SKILLS</span>
-                  <small>03</small>
-                </div>
-                <div className="book-spine">
-                  <span>SKILLS</span>
-                </div>
-                <div className="book-cover">
-                  <div className="spirals" aria-hidden="true">
-                    <i></i><i></i><i></i><i></i><i></i>
-                  </div>
-                  <div className="cover-content">
-                    <small>03</small>
-                    <strong>My<br />Skills</strong>
-                    <em>tools &amp; systems</em>
-                  </div>
-                </div>
-              </div>
-            </a>
-
-            <a href="#experience" className="portfolio-book book-yellow" aria-label="Open Experience">
-              <div className="book">
-                <div className="book-pages">
-                  <span>EXPERIENCE</span>
-                  <small>04</small>
-                </div>
-                <div className="book-spine">
-                  <span>EXPERIENCE</span>
-                </div>
-                <div className="book-cover">
-                  <div className="spirals" aria-hidden="true">
-                    <i></i><i></i><i></i><i></i><i></i>
-                  </div>
-                  <div className="cover-content">
-                    <small>04</small>
-                    <strong>Experience<br />Wins</strong>
-                    <em>what I've done</em>
-                  </div>
-                </div>
-              </div>
-            </a>
-
-            <a href="#contact" className="portfolio-book book-red" aria-label="Open Contact">
-              <div className="book">
-                <div className="book-pages">
-                  <span>CONTACT</span>
-                  <small>05</small>
-                </div>
-                <div className="book-spine">
-                  <span>CONTACT</span>
-                </div>
-                <div className="book-cover">
-                  <div className="spirals" aria-hidden="true">
-                    <i></i><i></i><i></i><i></i><i></i>
-                  </div>
-                  <div className="cover-content">
-                    <small>05</small>
-                    <strong>Let's<br />Talk</strong>
-                    <em>find me here</em>
-                  </div>
-                </div>
-              </div>
-            </a>
-
-          </div>
-
-          <div className="book-instruction">
-            <span>CHOOSE A CHAPTER</span>
-            <span>·</span>
-            <span>CLICK TO EXPLORE</span>
-          </div>
-
-        </section>
-
-          <p className="hero-description">
-            I build AI systems, machine learning applications and
-            software products that turn ideas into working products.
-          </p>
-
-          <div className="hero-buttons">
-
-            <NavLink
-              to="/work"
-              className="hero-action hero-action--primary"
-            >
-              SEE WHAT I BUILD →
-            </NavLink>
-
-            <a
-              href="/resume.pdf"
-              target="_blank"
-              rel="noreferrer"
-              className="hero-action hero-action--resume"
-            >
-              RESUME ↗
-            </a>
-
-          </div>
-
-
-          <div className="hero-details">
-
-            <span>
-              Bengaluru, India
-            </span>
-
-            <span>
-              AI / ML Student
-            </span>
-
-            <div className="social-buttons">
-
-              <a
-                href="https://www.linkedin.com/in/priyanshu-bhagat-92238239a/"
-                target="_blank"
-                rel="noreferrer"
-                className="social-button"
-                aria-label="LinkedIn"
-              >
-                <img
-                  src="/linkedin.png"
-                  alt="LinkedIn"
-                />
-              </a>
-
-              <a
-                href="https://github.com/priyanshu015211"
-                target="_blank"
-                rel="noreferrer"
-                className="social-button"
-                aria-label="GitHub"
-              >
-                <img
-                  src="/github.png"
-                  alt="GitHub"
-                />
-              </a>
-
-            </div>
-
-          </div>
-
-        </section>
-
-
-        {/* =====================================================
-            ABOUT
-        ===================================================== */}
-
-        <section
-          id="about"
-          className="section about-section"
-        >
-
-          <div className="section-heading">
-
-            <span>01</span>
-
-            <h2>
-              About me
-            </h2>
-
-          </div>
-
-
-          <div className="about-layout">
-
-            {/* LEFT */}
-
-            <div className="about-main">
-
-              <p className="about-intro">
-                I'm a B.Tech Artificial Intelligence & Machine
-                Learning student interested in building practical
-                AI and software systems.
-              </p>
-
-              <p>
-                My work sits between machine learning, backend
-                engineering and product development. I enjoy
-                taking an idea from a rough concept to something
-                people can actually use.
-              </p>
-
-              <p>
-                I'm currently focused on AI/ML engineering,
-                backend development and generative AI, while
-                continuing to strengthen my foundations in
-                software development.
-              </p>
-
-            </div>
-
-
-            {/* RIGHT */}
-
-            <div className="about-side">
-
-              <div className="about-detail">
-
-                <span className="detail-label">
-                  FOCUS
-                </span>
-
-                <span className="detail-value">
-                  AI / ML · GenAI
-                </span>
-
-              </div>
-
-
-              <div className="about-detail">
-
-                <span className="detail-label">
-                  EDUCATION
-                </span>
-
-                <span className="detail-value">
-                  B.Tech · AIML · Present
-                </span>
-
-              </div>
-
-
-              <div className="about-detail">
-
-                <span className="detail-label">
-                  BASED IN
-                </span>
-
-                <span className="detail-value">
-                  Bengaluru, India
-                </span>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </section>
-
-
-        {/* =====================================================
-            SELECTED WORK
-        ===================================================== */}
-
-        
 
 
         {/* =====================================================
@@ -1221,21 +1191,6 @@ function DeskPage() {
 
     </div>
   );
-}
-
-
-function App() {
-  const { pathname } = useLocation();
-
-  if (pathname === "/work") {
-    return <SelectedWorkPage />;
-  }
-
-  if (pathname.startsWith("/work/")) {
-    return <ProjectDetailPage />;
-  }
-
-  return <DeskPage />;
 }
 
 export default App;
