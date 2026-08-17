@@ -485,6 +485,150 @@ function SelectedWorkPage() {
 
 
 
+
+function ExperiencePage() {
+  const navigate = useNavigate();
+
+  return (
+    <div className="page experience-page">
+      <header className="navbar">
+        <NavLink to="/" className="logo" aria-label="Back to desk">
+          PR.
+        </NavLink>
+      </header>
+
+      <button
+        type="button"
+        className="page-back experience-page-back"
+        onClick={() => navigate("/")}
+      >
+        ← DESK
+      </button>
+
+      <main>
+        <section className="experience-overview-section">
+          <div className="experience-overview-top">
+            <span className="experience-number">04</span>
+            <span className="experience-kicker">EXPERIENCE · ACHIEVEMENTS · GROWTH</span>
+          </div>
+
+          <div className="experience-overview-title">
+            <p className="project-file-label">CAREER FILE</p>
+            <h1>
+              Experience &amp;
+              <span>Achievements.</span>
+            </h1>
+          </div>
+
+          <div className="experience-overview-intro">
+            <p>
+              A record of the experiences, challenges and milestones that have
+              shaped how I build, learn and contribute.
+            </p>
+
+            <div className="experience-overview-note">
+              <span>FOCUS</span>
+              <strong>AI / ML · SOFTWARE · OPEN SOURCE</strong>
+            </div>
+          </div>
+
+          <div className="career-file-list">
+            <article className="career-file-item career-file-item--featured">
+              <div className="career-file-meta">
+                <span>01</span>
+                <span>FINALIST</span>
+                <span>2026</span>
+              </div>
+
+              <div className="career-file-main">
+                <p className="career-file-label">NATIONAL IDEATHON</p>
+                <h2>Samsung ANVESHANA</h2>
+                <h3>Solve for Tomorrow</h3>
+                <p>
+                  Reached the national ideathon finals with <strong>SafeHalo</strong>,
+                  a discreet personal-safety wearable concept designed around
+                  location tracking, emergency detection and practical everyday use.
+                </p>
+
+                <div className="career-file-tags">
+                  <span>SafeHalo</span>
+                  <span>IoT</span>
+                  <span>Product Design</span>
+                  <span>Ideathon</span>
+                </div>
+              </div>
+            </article>
+
+            <article className="career-file-item">
+              <div className="career-file-meta">
+                <span>02</span>
+                <span>MACHINE LEARNING</span>
+                <span>MAR — JUN 2026</span>
+              </div>
+
+              <div className="career-file-main">
+                <p className="career-file-label">TRAINING · INTERNSHIP</p>
+                <h2>Unified Mentor</h2>
+                <h3>Structured Training &amp; Internship Program</h3>
+                <p>
+                  Completed a structured machine-learning training and internship
+                  program, developing <strong>UAC Capacity Monitor</strong> as the
+                  submitted project. The work combined forecasting, analytics,
+                  validation and an interactive Streamlit product.
+                </p>
+
+                <div className="career-file-tags">
+                  <span>Python</span>
+                  <span>Scikit-learn</span>
+                  <span>Prophet</span>
+                  <span>Streamlit</span>
+                </div>
+              </div>
+            </article>
+
+            <article className="career-file-item">
+              <div className="career-file-meta">
+                <span>03</span>
+                <span>OPEN SOURCE</span>
+                <span>MAY — AUG 2026</span>
+              </div>
+
+              <div className="career-file-main">
+                <p className="career-file-label">COMMUNITY · CONTRIBUTION</p>
+                <h2>GirlScript Summer of Code ’26</h2>
+                <h3>Open Source Contributor · AI / Agents Track</h3>
+                <p>
+                  Contributing to open-source projects through collaborative GitHub
+                  development, issue-based work and community-driven contributions.
+                </p>
+
+                <div className="career-file-tags">
+                  <span>GitHub</span>
+                  <span>Open Source</span>
+                  <span>AI / Agents</span>
+                  <span>Collaboration</span>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div className="career-file-bottom">
+            <div>
+              <span className="career-file-label">CURRENT CHAPTER</span>
+              <h2>Building, learning, contributing.</h2>
+            </div>
+
+            <p>
+              Currently focused on strengthening my AI/ML engineering foundations
+              while building practical software products and exploring generative AI.
+            </p>
+          </div>
+        </section>
+      </main>
+    </div>
+  );
+}
+
 function DeskPage() {
   const navigate = useNavigate();
 
@@ -598,7 +742,7 @@ function DeskPage() {
               </div>
             </a>
 
-            <a href="#experience" className="portfolio-book book-yellow" aria-label="Open Experience">
+            <NavLink to="/experience" className="portfolio-book book-yellow" aria-label="Open Experience">
               <div className="book">
                 <div className="book-pages">
                   <span>EXPERIENCE</span>
@@ -618,7 +762,7 @@ function DeskPage() {
                   </div>
                 </div>
               </div>
-            </a>
+            </NavLink>
 
             <a href="#contact" className="portfolio-book book-red" aria-label="Open Contact">
               <div className="book">
@@ -1229,6 +1373,10 @@ function App() {
 
   if (pathname === "/work") {
     return <SelectedWorkPage />;
+  }
+
+  if (pathname === "/experience") {
+    return <ExperiencePage />;
   }
 
   if (pathname.startsWith("/work/")) {
