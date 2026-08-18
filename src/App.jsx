@@ -596,8 +596,8 @@ function ExperienceNotes({ compact = false }) {
       <button type="button" className="career-artifact career-artifact--open-source"
         onClick={() => navigate("/experience/girlscript-summer-of-code")}
         aria-label="Open GirlScript Summer of Code experience">
-        <span className="career-artifact__tape career-artifact__tape--gssoc" aria-hidden="true" />
         <div className="career-artifact__contribution">
+          <span className="career-artifact__tape career-artifact__tape--gssoc" aria-hidden="true" />
           <div className="career-artifact__top"><span>OPEN SOURCE</span><span>03 / 03</span></div>
           <div className="career-artifact__main">
             <span className="career-artifact__eyebrow">COMMUNITY · CONTRIBUTION</span>
