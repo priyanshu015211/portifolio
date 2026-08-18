@@ -4110,3 +4110,98 @@ main > .section:target .section-heading h2 {
     bottom: 66px;
   }
 }
+/* =========================================================
+   GSSOC CARD — CLEAN BOTTOM HIERARCHY
+========================================================= */
+
+.career-artifact--open-source .career-artifact__contribution {
+  position: relative;
+  min-height: 288px;
+  padding: 27px 25px 20px;
+  background: #ecd0d8;
+  border: 1px solid rgba(24,45,97,.15);
+  box-shadow: 0 11px 19px rgba(24,45,97,.06);
+  overflow: visible;
+}
+
+.career-artifact__tape--gssoc {
+  position: absolute;
+  z-index: 10;
+  top: -16px;
+  left: 50%;
+  width: 96px;
+  height: 29px;
+  transform: translateX(-50%) rotate(2deg);
+  background: rgba(247,244,229,.84);
+  border: 1px solid rgba(122,109,82,.10);
+  box-shadow: 0 3px 5px rgba(24,45,97,.07), 0 1px 0 rgba(255,255,255,.5) inset;
+  border-radius: 1px;
+}
+
+.career-artifact__tape--gssoc::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0 14%, rgba(120,105,78,.05) 14% 16%, transparent 16% 34%, rgba(120,105,78,.04) 34% 36%, transparent 36% 100%);
+  opacity: .7;
+}
+
+.career-artifact--open-source .career-artifact__main h3 {
+  font-size: clamp(42px, 4vw, 60px);
+  line-height: .86;
+}
+
+.career-artifact--open-source .career-artifact__commit {
+  position: absolute;
+  left: 25px;
+  bottom: 52px;
+  display: flex;
+  gap: 8px;
+  margin: 0;
+}
+
+.career-artifact--open-source .career-artifact__commit span {
+  min-width: 45px;
+  padding: 5px 7px;
+  border: 1px dashed rgba(24,45,97,.24);
+  background: rgba(255,255,255,.12);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: .10em;
+  text-align: center;
+}
+
+.career-artifact--open-source .career-artifact__stamp--round {
+  position: absolute;
+  top: 94px;
+  right: 20px;
+  bottom: auto;
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  padding: 0;
+  font-size: 9px;
+  text-align: center;
+  transform: rotate(7deg);
+}
+
+.career-artifact--open-source .career-artifact__bottom {
+  position: absolute;
+  left: 25px;
+  right: 25px;
+  bottom: 17px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  z-index: 3;
+}
+
+@media (max-width: 900px) {
+  .career-artifact--open-source .career-artifact__stamp--round {
+    top: 92px;
+    right: 18px;
+  }
+}
