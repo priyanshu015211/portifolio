@@ -149,7 +149,12 @@ const EXPERIENCE_DETAILS = {
     ],
     stack: "Git · GitHub · Open Source · AI / Agents · Collaboration",
     outcome: "GirlScript Summer of Code ’26 · Top 2%",
-    links: []
+    links: [
+      {
+        label: "GIRLSCRIPT PROFILE",
+        href: "https://gssoc.girlscript.org/profile/535cb486-ac38-4052-86f0-4e62eb81dc48"
+      }
+    ]
   }
 };
 
@@ -598,15 +603,32 @@ function ExperienceNotes({ compact = false }) {
         aria-label="Open GirlScript Summer of Code experience">
         <div className="career-artifact__contribution">
           <span className="career-artifact__tape career-artifact__tape--gssoc" aria-hidden="true" />
-          <div className="career-artifact__top"><span>OPEN SOURCE</span><span>03 / 03</span></div>
+
+          <div className="career-artifact__top">
+            <span>OPEN SOURCE</span>
+            <span>03 / 03</span>
+          </div>
+
           <div className="career-artifact__main">
             <span className="career-artifact__eyebrow">COMMUNITY · CONTRIBUTION</span>
-            <h3>GSSOC ’26</h3>
+            <h3>GSSOC<br />’26</h3>
             <strong>AI / AGENTS TRACK</strong>
           </div>
-          <div className="career-artifact__commit"><span>PR</span><span>ISSUE</span><span>COLLAB</span></div>
-          <div className="career-artifact__stamp career-artifact__stamp--round">TOP 2%</div>
-          <div className="career-artifact__bottom"><span>GITHUB · OPEN SOURCE</span><span>↗</span></div>
+
+          <div className="career-artifact__commit" aria-label="Open source workflow">
+            <span>PR</span>
+            <span>ISSUE</span>
+            <span>COLLAB</span>
+          </div>
+
+          <div className="career-artifact__stamp career-artifact__stamp--round">
+            TOP 2%
+          </div>
+
+          <div className="career-artifact__bottom">
+            <span>OPEN SOURCE</span>
+            <span>PROFILE ↗</span>
+          </div>
         </div>
       </button>
     </div>
