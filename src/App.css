@@ -4035,17 +4035,18 @@ main > .section:target .section-heading h2 {
 /* GirlScript: replace the pin with a strip of tape. */
 .career-artifact__tape--gssoc {
   position: absolute;
-  z-index: 5;
-  top: -15px;
+  z-index: 10;
+  top: -16px;
   left: 50%;
-  width: 92px;
-  height: 30px;
+  width: 96px;
+  height: 29px;
   transform: translateX(-50%) rotate(2deg);
-  background: rgba(247,244,229,.76);
-  border: 1px solid rgba(122,109,82,.08);
+  background: rgba(247,244,229,.84);
+  border: 1px solid rgba(122,109,82,.10);
   box-shadow:
     0 3px 5px rgba(24,45,97,.07),
-    0 1px 0 rgba(255,255,255,.45) inset;
+    0 1px 0 rgba(255,255,255,.5) inset;
+  border-radius: 1px;
 }
 
 .career-artifact__tape--gssoc::after {
@@ -4063,3 +4064,9 @@ main > .section:target .section-heading h2 {
     );
   opacity: .7;
 }
+
+.career-artifact--open-source .career-artifact__contribution {
+  position: relative;
+  margin-top: 0;
+}
+
