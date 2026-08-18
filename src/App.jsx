@@ -84,6 +84,76 @@ const PROJECTS = {
 };
 
 
+const EXPERIENCE_DETAILS = {
+  "samsung-anveshana": {
+    number: "01",
+    type: "NATIONAL IDEATHON",
+    title: "Samsung ANVESHANA",
+    subtitle: "Solve for Tomorrow",
+    date: "2026",
+    label: "FINALIST",
+    color: "amber",
+    intro: "Reached the national ideathon finals with SafeHalo, a discreet personal-safety wearable concept designed around practical emergency response.",
+    overview: "SafeHalo was designed as a wearable safety product that could blend into everyday life while still providing useful emergency functionality. The concept brought together location tracking, cellular communication, indoor identification and motion sensing inside a discreet form factor.",
+    highlights: [
+      "Designed the SafeHalo product concept and interaction flow",
+      "Worked with ESP32, GPS, GSM, RFID and motion-sensing components",
+      "Explored tamper detection and emergency activation workflows",
+      "Focused on balancing technical feasibility with everyday usability",
+      "Presented the concept as part of the national ideathon"
+    ],
+    stack: "ESP32 · NEO-6M GPS · SIM900L GSM · RFID · MPU6050",
+    outcome: "Samsung ANVESHANA National Ideathon Finalist",
+    links: []
+  },
+  "unified-mentor": {
+    number: "02",
+    type: "MACHINE LEARNING · INTERNSHIP",
+    title: "Unified Mentor",
+    subtitle: "Structured Training & Internship Program",
+    date: "MAR — JUN 2026",
+    label: "INTERNSHIP",
+    color: "cream",
+    intro: "Completed a structured machine-learning training and internship program and developed UAC Capacity Monitor as the submitted project.",
+    overview: "The program gave me a practical environment to work through an end-to-end machine-learning product: preparing operational data, engineering features, evaluating models, forecasting future demand and presenting the results through an interactive dashboard.",
+    highlights: [
+      "Built the UAC Capacity Monitor analytics dashboard",
+      "Used Random Forest and Prophet forecasting models",
+      "Created 30 / 60 / 90 day forecasting horizons",
+      "Implemented lag and rolling-statistic feature engineering",
+      "Evaluated models with MAE, RMSE, MAPE and R²",
+      "Built the final product with Streamlit and Plotly"
+    ],
+    stack: "Python · Pandas · NumPy · Scikit-learn · Prophet · Streamlit · Plotly",
+    outcome: "UAC Capacity Monitor · R² = 0.969",
+    links: [
+      { label: "LIVE PROJECT", href: "https://priyanshu-uac-capacity-monitor.streamlit.app/" }
+    ]
+  },
+  "girlscript-summer-of-code": {
+    number: "03",
+    type: "OPEN SOURCE · COMMUNITY",
+    title: "GirlScript Summer of Code ’26",
+    subtitle: "Open Source Contributor · AI / Agents Track",
+    date: "MAY — AUG 2026",
+    label: "TOP 2%",
+    color: "rose",
+    intro: "Contributing to open-source projects through collaborative GitHub development, issue-based work and community-driven contributions.",
+    overview: "This experience is centered on building in public: understanding existing codebases, collaborating through GitHub, working from issues and pull requests, and learning how software evolves through community contribution.",
+    highlights: [
+      "Worked with collaborative GitHub workflows",
+      "Contributed through issue-driven development",
+      "Explored AI / Agents related open-source work",
+      "Practiced reading and navigating unfamiliar repositories",
+      "Built experience with community-based engineering"
+    ],
+    stack: "Git · GitHub · Open Source · AI / Agents · Collaboration",
+    outcome: "GirlScript Summer of Code ’26 · Top 2%",
+    links: []
+  }
+};
+
+
 function ProjectDetailPage() {
   const { pathname } = useLocation();
   const navigate = useNavigate();
@@ -486,15 +556,189 @@ function SelectedWorkPage() {
 
 
 
+function ExperienceNotes({ compact = false }) {
+  const navigate = useNavigate();
+
+  return (
+    <div className={compact ? "experience-notes experience-notes--compact" : "experience-notes"}>
+
+      <button
+        type="button"
+        className="experience-note experience-note--samsung"
+        onClick={() => navigate("/experience/samsung-anveshana")}
+        aria-label="Open Samsung ANVESHANA experience"
+      >
+        <span className="experience-note__tape" aria-hidden="true" />
+        <div className="experience-note__meta">
+          <span>01 · FINALIST</span>
+          <span>2026</span>
+        </div>
+        <div className="experience-note__body">
+          <span className="experience-note__eyebrow">NATIONAL IDEATHON</span>
+          <h3>Samsung ANVESHANA</h3>
+          <strong>Solve for Tomorrow</strong>
+          <p>SafeHalo — a discreet IoT product concept for personal safety.</p>
+        </div>
+        <div className="experience-note__footer">
+          <span>SafeHalo</span>
+          <span>IoT · Product Design</span>
+          <span className="experience-note__arrow">↗</span>
+        </div>
+      </button>
+
+      <button
+        type="button"
+        className="experience-note experience-note--mentor"
+        onClick={() => navigate("/experience/unified-mentor")}
+        aria-label="Open Unified Mentor experience"
+      >
+        <span className="experience-note__clip" aria-hidden="true" />
+        <div className="experience-note__paper">
+          <div className="experience-note__meta">
+            <span>02 · INTERNSHIP</span>
+            <span>MAR — JUN 2026</span>
+          </div>
+          <div className="experience-note__body">
+            <span className="experience-note__eyebrow">MACHINE LEARNING</span>
+            <h3>Unified Mentor</h3>
+            <strong>Structured Training &amp; Internship Program</strong>
+            <p>Built UAC Capacity Monitor as the submitted ML project.</p>
+          </div>
+          <div className="experience-note__footer">
+            <span>UAC Capacity Monitor</span>
+            <span>Forecasting · Streamlit</span>
+            <span className="experience-note__arrow">↗</span>
+          </div>
+        </div>
+      </button>
+
+      <button
+        type="button"
+        className="experience-note experience-note--gssoc"
+        onClick={() => navigate("/experience/girlscript-summer-of-code")}
+        aria-label="Open GirlScript Summer of Code experience"
+      >
+        <span className="experience-note__pin" aria-hidden="true" />
+        <div className="experience-note__card">
+          <div className="experience-note__meta">
+            <span>03 · OPEN SOURCE</span>
+            <span>MAY — AUG 2026</span>
+          </div>
+          <div className="experience-note__body">
+            <span className="experience-note__eyebrow">COMMUNITY · CONTRIBUTION</span>
+            <h3>GirlScript Summer of Code ’26</h3>
+            <strong>Open Source Contributor · AI / Agents</strong>
+            <p>Collaborative GitHub development and community-driven contribution.</p>
+          </div>
+          <div className="experience-note__footer">
+            <span>Top 2%</span>
+            <span>GitHub · Open Source</span>
+            <span className="experience-note__arrow">↗</span>
+          </div>
+        </div>
+      </button>
+
+    </div>
+  );
+}
+
+function ExperienceDetailPage() {
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
+  const match = pathname.match(/^\/experience\/([^/]+)$/);
+  const slug = match ? decodeURIComponent(match[1]) : null;
+  const item = slug ? EXPERIENCE_DETAILS[slug] : null;
+
+  if (!item) {
+    return (
+      <main className="experience-detail-page">
+        <div className="experience-detail-paper">
+          <div className="experience-detail-nav">
+            <button type="button" onClick={() => navigate("/experience")}>← EXPLORE EXPERIENCE</button>
+            <button type="button" onClick={() => navigate("/")}>DESK ↗</button>
+          </div>
+          <h1>Experience not found</h1>
+        </div>
+      </main>
+    );
+  }
+
+  return (
+    <main className="experience-detail-page">
+      <div className="experience-detail-paper">
+        <div className="experience-detail-nav">
+          <button type="button" onClick={() => navigate("/experience")}>← EXPLORE EXPERIENCE</button>
+          <button type="button" onClick={() => navigate("/")}>DESK ↗</button>
+        </div>
+
+        <div className="experience-detail-topline">
+          <span>{item.number}</span>
+          <span>{item.type}</span>
+        </div>
+
+        <div className={`experience-detail-title experience-detail-title--${item.color}`}>
+          <p className="project-file-label">{item.label}</p>
+          <h1>{item.title}</h1>
+          <h2>{item.subtitle}</h2>
+          <span>{item.date}</span>
+        </div>
+
+        <div className="experience-detail-grid">
+          <article className="experience-detail-main">
+            <p className="experience-detail-intro">{item.intro}</p>
+
+            <section>
+              <h2>Overview</h2>
+              <p>{item.overview}</p>
+            </section>
+
+            <section>
+              <h2>What I worked on</h2>
+              <div className="experience-detail-list">
+                {item.highlights.map((point) => (
+                  <div className="experience-detail-item" key={point}>
+                    <span aria-hidden="true">✳</span>
+                    <span>{point}</span>
+                  </div>
+                ))}
+              </div>
+            </section>
+          </article>
+
+          <aside className="experience-detail-side">
+            <div className="experience-detail-note">
+              <span>TOOLS / FOCUS</span>
+              <p>{item.stack}</p>
+            </div>
+
+            <div className="experience-detail-note experience-detail-note--outcome">
+              <span>OUTCOME</span>
+              <strong>{item.outcome}</strong>
+            </div>
+
+            {item.links.length > 0 && (
+              <div className="experience-detail-links">
+                {item.links.map((link) => (
+                  <a key={link.href} href={link.href} target="_blank" rel="noreferrer">
+                    {link.label} <span>↗</span>
+                  </a>
+                ))}
+              </div>
+            )}
+          </aside>
+        </div>
+      </div>
+    </main>
+  );
+}
+
 function ExperiencePage() {
   const navigate = useNavigate();
 
   return (
     <div className="page experience-page">
       <header className="navbar">
-        <NavLink to="/" className="logo" aria-label="Back to desk">
-          PR.
-        </NavLink>
+        <NavLink to="/" className="logo" aria-label="Back to desk">PR.</NavLink>
       </header>
 
       <button
@@ -532,84 +776,12 @@ function ExperiencePage() {
             </div>
           </div>
 
-          <div className="career-file-list">
-            <article className="career-file-item career-file-item--featured">
-              <div className="career-file-meta">
-                <span>01</span>
-                <span>FINALIST</span>
-                <span>2026</span>
-              </div>
+          <ExperienceNotes />
 
-              <div className="career-file-main">
-                <p className="career-file-label">NATIONAL IDEATHON</p>
-                <h2>Samsung ANVESHANA</h2>
-                <h3>Solve for Tomorrow</h3>
-                <p>
-                  Reached the national ideathon finals with <strong>SafeHalo</strong>,
-                  a discreet personal-safety wearable concept designed around
-                  location tracking, emergency detection and practical everyday use.
-                </p>
-
-                <div className="career-file-tags">
-                  <span>SafeHalo</span>
-                  <span>IoT</span>
-                  <span>Product Design</span>
-                  <span>Ideathon</span>
-                </div>
-              </div>
-            </article>
-
-            <article className="career-file-item">
-              <div className="career-file-meta">
-                <span>02</span>
-                <span>MACHINE LEARNING</span>
-                <span>MAR — JUN 2026</span>
-              </div>
-
-              <div className="career-file-main">
-                <p className="career-file-label">TRAINING · INTERNSHIP</p>
-                <h2>Unified Mentor</h2>
-                <h3>Structured Training &amp; Internship Program</h3>
-                <p>
-                  Completed a structured machine-learning training and internship
-                  program, developing <strong>UAC Capacity Monitor</strong> as the
-                  submitted project. The work combined forecasting, analytics,
-                  validation and an interactive Streamlit product.
-                </p>
-
-                <div className="career-file-tags">
-                  <span>Python</span>
-                  <span>Scikit-learn</span>
-                  <span>Prophet</span>
-                  <span>Streamlit</span>
-                </div>
-              </div>
-            </article>
-
-            <article className="career-file-item">
-              <div className="career-file-meta">
-                <span>03</span>
-                <span>OPEN SOURCE</span>
-                <span>MAY — AUG 2026</span>
-              </div>
-
-              <div className="career-file-main">
-                <p className="career-file-label">COMMUNITY · CONTRIBUTION</p>
-                <h2>GirlScript Summer of Code ’26</h2>
-                <h3>Open Source Contributor · AI / Agents Track</h3>
-                <p>
-                  Contributing to open-source projects through collaborative GitHub
-                  development, issue-based work and community-driven contributions.
-                </p>
-
-                <div className="career-file-tags">
-                  <span>GitHub</span>
-                  <span>Open Source</span>
-                  <span>AI / Agents</span>
-                  <span>Collaboration</span>
-                </div>
-              </div>
-            </article>
+          <div className="experience-explore-caption">
+            <span>CLICK A NOTE TO READ THE FULL STORY</span>
+            <span>·</span>
+            <span>ONE EXPERIENCE AT A TIME</span>
           </div>
 
           <div className="career-file-bottom">
@@ -623,6 +795,31 @@ function ExperiencePage() {
               while building practical software products and exploring generative AI.
             </p>
           </div>
+
+          <section className="certificates-future">
+            <div className="certificates-future__heading">
+              <span className="career-file-label">CERTIFICATES &amp; CREDENTIALS</span>
+              <span>ARCHIVE — GROWING</span>
+            </div>
+
+            <div className="certificate-slips">
+              <article className="certificate-slip certificate-slip--one">
+                <span>01</span>
+                <strong>Next certificate</strong>
+                <small>Save a new credential here.</small>
+              </article>
+              <article className="certificate-slip certificate-slip--two">
+                <span>02</span>
+                <strong>Certification archive</strong>
+                <small>Keep the collection growing.</small>
+              </article>
+              <article className="certificate-slip certificate-slip--three">
+                <span>03</span>
+                <strong>Learning milestone</strong>
+                <small>A future credential can live here.</small>
+              </article>
+            </div>
+          </section>
         </section>
       </main>
     </div>
@@ -1145,136 +1342,22 @@ function DeskPage() {
   id="experience"
   className="section achievement-section"
 >
-
   <div className="section-heading">
-
     <span>04</span>
-
     <h2>
-      <span className="section-highlight section-highlight--amber">Experience & Achievement</span>
+      <span className="section-highlight section-highlight--amber">Experience &amp; Achievement</span>
     </h2>
-
   </div>
 
+  <p className="experience-desk-intro">
+    A few milestones, projects and communities that have shaped how I build.
+  </p>
 
-  <div className="achievement-list">
+  <ExperienceNotes compact />
 
-
-    {/* SAMSUNG ANVESHANA */}
-
-    <article className="achievement-item">
-
-      <div className="achievement-meta">
-
-        <span>
-          FINALIST
-        </span>
-
-        <span>
-          2026
-        </span>
-
-      </div>
-
-
-      <div className="achievement-main">
-
-        <h3>
-          Samsung ANVESHANA
-        </h3>
-
-        <p className="achievement-subtitle">
-          Solve for Tomorrow
-        </p>
-
-        <p className="achievement-description">
-          National Ideathon finalist with SafeHalo,
-          a personal safety wearable concept.
-        </p>
-
-      </div>
-
-    </article>
-
-
-    {/* UNIFIED MENTOR */}
-
-    <article className="achievement-item">
-
-      <div className="achievement-meta">
-
-        <span>
-          MACHINE LEARNING
-        </span>
-
-        <span>
-          MAR — JUN 2026
-        </span>
-
-      </div>
-
-
-      <div className="achievement-main">
-
-        <h3>
-          Unified Mentor
-        </h3>
-
-        <p className="achievement-subtitle">
-          Structured Training & Internship Program
-        </p>
-
-        <p className="achievement-description">
-          Completed a structured machine learning
-          training/internship program and developed
-          UAC Capacity Monitor as the submitted project.
-        </p>
-
-      </div>
-
-    </article>
-
-
-    {/* GIRLSCRIPT SUMMER OF CODE */}
-
-    <article className="achievement-item">
-
-      <div className="achievement-meta">
-
-        <span>
-          OPEN SOURCE
-        </span>
-
-        <span>
-          MAY — AUG 2026
-        </span>
-
-      </div>
-
-
-      <div className="achievement-main">
-
-        <h3>
-          GirlScript Summer of Code ’26
-        </h3>
-
-        <p className="achievement-subtitle">
-          Open Source Contributor · AI / Agents Track · Top 2 %
-        </p>
-
-        <p className="achievement-description">
-          Contributing to open-source projects through
-          collaborative GitHub development and
-          community-driven contributions.
-        </p>
-
-      </div>
-
-    </article>
-
-
+  <div className="experience-desk-cta">
+    <NavLink to="/experience">EXPLORE EXPERIENCE ↗</NavLink>
   </div>
-
 </section>
 
 
@@ -1377,6 +1460,10 @@ function App() {
 
   if (pathname === "/experience") {
     return <ExperiencePage />;
+  }
+
+  if (pathname.startsWith("/experience/")) {
+    return <ExperienceDetailPage />;
   }
 
   if (pathname.startsWith("/work/")) {
