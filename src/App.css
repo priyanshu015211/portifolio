@@ -3947,3 +3947,119 @@ main > .section:target .section-heading h2 {
     min-height: 250px;
   }
 }
+
+/* =========================================================
+   EXPERIENCE — CAREER ARCHIVE ARTIFACTS
+========================================================= */
+.experience-desk-intro{max-width:740px;margin:0 auto 28px;color:var(--text);font-size:15px;line-height:1.7;text-align:center}
+.experience-desk-cta{display:flex;justify-content:center;margin-top:22px}
+.experience-desk-cta a{color:var(--ink);text-decoration:none;border-bottom:1px solid rgba(24,45,97,.35);padding:7px 0 6px;font-size:10px;font-weight:800;letter-spacing:.14em;transition:transform 200ms ease,letter-spacing 200ms ease}
+.experience-desk-cta a:hover{transform:translateX(4px);letter-spacing:.17em}
+.career-archive{width:min(1080px,100%);margin:54px auto 0;display:grid;grid-template-columns:1fr 1.08fr .95fr;gap:clamp(22px,3vw,34px);align-items:start}
+.career-archive--compact{margin-top:28px;max-width:1040px}
+.career-artifact{position:relative;width:100%;min-height:320px;border:0;background:transparent;padding:0;color:var(--ink);font:inherit;text-align:left;cursor:pointer;transition:transform 280ms cubic-bezier(.2,.78,.2,1),filter 260ms ease}
+.career-artifact:hover,.career-artifact:focus-visible{transform:translateY(-10px) rotate(0);filter:drop-shadow(0 18px 24px rgba(24,45,97,.12));outline:none}
+.career-artifact:focus-visible{box-shadow:0 0 0 2px rgba(24,45,97,.18)}
+.career-artifact__top,.career-artifact__bottom{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:8px;font-weight:800;letter-spacing:.15em;text-transform:uppercase}
+.career-artifact__main{display:flex;flex-direction:column;gap:8px}
+.career-artifact__eyebrow{font-size:8px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;opacity:.68}
+.career-artifact__main h3{margin:0;color:var(--ink);font-family:"Caveat",cursive;font-size:clamp(42px,4.2vw,66px);line-height:.9}
+.career-artifact__main strong{font-size:12px;line-height:1.45}
+.career-artifact__bottom{margin-top:auto}
+.career-artifact--badge{min-height:340px;padding:30px 28px 24px;background:#f2dfa9;transform:rotate(-2deg);box-shadow:0 14px 22px rgba(24,45,97,.08)}
+.career-artifact--badge::before{content:"";position:absolute;inset:11px;border:1px dashed rgba(24,45,97,.20)}
+.career-artifact--badge .career-artifact__top,.career-artifact--badge .career-artifact__main,.career-artifact--badge .career-artifact__bottom{position:relative;z-index:1}
+.career-artifact__hole{position:absolute;top:18px;left:22px;width:18px;height:18px;border:2px solid rgba(24,45,97,.38);border-radius:50%;background:rgba(255,255,255,.44);z-index:2}
+.career-artifact__lanyard{position:absolute;top:-18px;left:58px;width:130px;height:34px;border:3px solid #ae7e22;border-bottom:0;border-radius:22px 22px 0 0;opacity:.72;transform:rotate(-4deg)}
+.career-artifact__stamp{position:absolute;right:25px;bottom:52px;padding:6px 9px;border:2px solid #a14a3d;color:#a14a3d;font-size:10px;font-weight:900;letter-spacing:.12em;transform:rotate(-8deg);opacity:.82}
+.career-artifact--file{min-height:350px;padding:0 12px 15px;transform:rotate(1.2deg)}
+.career-artifact__file-paper{position:relative;min-height:322px;padding:31px 29px 22px;background:repeating-linear-gradient(to bottom,transparent 0,transparent 27px,rgba(74,116,165,.11) 28px,transparent 29px),#fffdf8;border:1px solid rgba(24,45,97,.15);box-shadow:0 14px 24px rgba(24,45,97,.08);display:flex;flex-direction:column}
+.career-artifact__file-paper::before{content:"";position:absolute;left:0;right:0;bottom:-19px;height:26px;background:#c59448;opacity:.62;z-index:-1}
+.career-artifact__clip{position:absolute;z-index:3;top:-12px;left:50%;width:66px;height:30px;transform:translateX(-50%);border:3px solid #7e8286;border-bottom:0;border-radius:20px 20px 0 0}
+.career-artifact__line{display:flex;justify-content:space-between;gap:10px;margin-top:22px;padding-top:12px;border-top:1px dashed rgba(24,45,97,.20);font-size:8px;font-weight:800;letter-spacing:.11em;text-transform:uppercase}
+.career-artifact__file-paper .career-artifact__bottom{margin-top:auto}
+.career-artifact--open-source{min-height:330px;padding:21px 17px;transform:rotate(-1.1deg)}
+.career-artifact__contribution{position:relative;min-height:288px;padding:27px 25px 20px;background:#ecd0d8;border:1px solid rgba(24,45,97,.15);box-shadow:0 11px 19px rgba(24,45,97,.06)}
+.career-artifact__pin{position:absolute;z-index:4;top:7px;left:50%;width:14px;height:14px;transform:translateX(-50%);border-radius:50%;background:#b85a64;box-shadow:0 2px 4px rgba(24,45,97,.16)}
+.career-artifact__commit{display:flex;gap:6px;margin-top:20px}
+.career-artifact__commit span{padding:5px 7px;border:1px dashed rgba(24,45,97,.28);font-size:8px;font-weight:800;letter-spacing:.10em}
+.career-artifact__stamp--round{width:56px;height:56px;display:grid;place-items:center;border-radius:50%;padding:0;font-size:9px;text-align:center;transform:rotate(8deg);bottom:50px}
+.career-artifact__contribution .career-artifact__bottom{position:absolute;left:25px;right:25px;bottom:20px}
+.career-archive--compact .career-artifact{min-height:260px}
+.career-archive--compact .career-artifact--badge{min-height:275px}
+.career-archive--compact .career-artifact--file{min-height:286px}
+.career-archive--compact .career-artifact__file-paper{min-height:260px}
+.career-archive--compact .career-artifact--open-source{min-height:265px}
+.career-archive--compact .career-artifact__contribution{min-height:235px}
+@media (max-width:900px){.career-archive{grid-template-columns:1fr}}
+
+
+/* =========================================================
+   CAREER ARCHIVE — PHYSICAL DETAIL POLISH
+========================================================= */
+
+/* Samsung ANVESHANA: proper bulletin-board push pin */
+.career-artifact__pushpin {
+  position: absolute;
+  z-index: 5;
+  top: -8px;
+  left: 50%;
+  width: 18px;
+  height: 18px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #f7f7f4 0 12%, #d9d9d4 13% 28%, #8d8f8f 29% 100%);
+  border: 1px solid #747677;
+  box-shadow:
+    0 3px 5px rgba(24,45,97,.17),
+    0 1px 0 rgba(255,255,255,.75) inset;
+}
+
+.career-artifact__pushpin::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -7px;
+  width: 3px;
+  height: 9px;
+  transform: translateX(-50%);
+  background: #757779;
+  border-radius: 0 0 2px 2px;
+}
+
+/* The old lanyard should not appear on the ANVESHANA card. */
+.career-artifact--badge .career-artifact__lanyard {
+  display: none;
+}
+
+/* GirlScript: replace the pin with a strip of tape. */
+.career-artifact__tape--gssoc {
+  position: absolute;
+  z-index: 5;
+  top: -15px;
+  left: 50%;
+  width: 92px;
+  height: 30px;
+  transform: translateX(-50%) rotate(2deg);
+  background: rgba(247,244,229,.76);
+  border: 1px solid rgba(122,109,82,.08);
+  box-shadow:
+    0 3px 5px rgba(24,45,97,.07),
+    0 1px 0 rgba(255,255,255,.45) inset;
+}
+
+.career-artifact__tape--gssoc::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0 14%,
+      rgba(120,105,78,.05) 14% 16%,
+      transparent 16% 34%,
+      rgba(120,105,78,.04) 34% 36%,
+      transparent 36% 100%
+    );
+  opacity: .7;
+}
