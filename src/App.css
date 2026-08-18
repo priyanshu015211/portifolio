@@ -4070,3 +4070,43 @@ main > .section:target .section-heading h2 {
   margin-top: 0;
 }
 
+
+
+/* =========================================================
+   GSSOC CARD — SEPARATED BOTTOM DETAILS
+========================================================= */
+
+.career-artifact--open-source .career-artifact__commit {
+  position: absolute;
+  left: 25px;
+  bottom: 49px;
+  margin-top: 0;
+  z-index: 2;
+}
+
+.career-artifact--open-source .career-artifact__stamp--round {
+  right: 21px;
+  bottom: 62px;
+  z-index: 2;
+}
+
+.career-artifact--open-source .career-artifact__contribution .career-artifact__bottom {
+  left: 25px;
+  right: 25px;
+  bottom: 17px;
+  z-index: 3;
+}
+
+.career-artifact--open-source .career-artifact__commit span {
+  background: rgba(255,255,255,0.18);
+}
+
+@media (max-width: 900px) {
+  .career-artifact--open-source .career-artifact__commit {
+    bottom: 52px;
+  }
+
+  .career-artifact--open-source .career-artifact__stamp--round {
+    bottom: 66px;
+  }
+}
