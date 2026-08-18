@@ -560,84 +560,55 @@ function ExperienceNotes({ compact = false }) {
   const navigate = useNavigate();
 
   return (
-    <div className={compact ? "experience-notes experience-notes--compact" : "experience-notes"}>
-
-      <button
-        type="button"
-        className="experience-note experience-note--samsung"
+    <div className={compact ? "career-archive career-archive--compact" : "career-archive"}>
+      <button type="button" className="career-artifact career-artifact--badge"
         onClick={() => navigate("/experience/samsung-anveshana")}
-        aria-label="Open Samsung ANVESHANA experience"
-      >
-        <span className="experience-note__tape" aria-hidden="true" />
-        <div className="experience-note__meta">
-          <span>01 · FINALIST</span>
-          <span>2026</span>
+        aria-label="Open Samsung ANVESHANA experience">
+        <span className="career-artifact__pushpin" aria-hidden="true" />
+        <div className="career-artifact__top"><span>SAMSUNG</span><span>01 / 03</span></div>
+        <div className="career-artifact__main">
+          <span className="career-artifact__eyebrow">ANVESHANA</span>
+          <h3>FINALE</h3>
+          <strong>SOLVE FOR TOMORROW</strong>
         </div>
-        <div className="experience-note__body">
-          <span className="experience-note__eyebrow">NATIONAL IDEATHON</span>
-          <h3>Samsung ANVESHANA</h3>
-          <strong>Solve for Tomorrow</strong>
-          <p>SafeHalo — a discreet IoT product concept for personal safety.</p>
-        </div>
-        <div className="experience-note__footer">
-          <span>SafeHalo</span>
-          <span>IoT · Product Design</span>
-          <span className="experience-note__arrow">↗</span>
+        <div className="career-artifact__stamp">FINALIST</div>
+        <div className="career-artifact__bottom">
+          <span>2026</span><span>SAFEHALO · IOT PRODUCT DESIGN</span><span>↗</span>
         </div>
       </button>
 
-      <button
-        type="button"
-        className="experience-note experience-note--mentor"
+      <button type="button" className="career-artifact career-artifact--file"
         onClick={() => navigate("/experience/unified-mentor")}
-        aria-label="Open Unified Mentor experience"
-      >
-        <span className="experience-note__clip" aria-hidden="true" />
-        <div className="experience-note__paper">
-          <div className="experience-note__meta">
-            <span>02 · INTERNSHIP</span>
-            <span>MAR — JUN 2026</span>
+        aria-label="Open Unified Mentor experience">
+        <span className="career-artifact__clip" aria-hidden="true" />
+        <div className="career-artifact__file-paper">
+          <div className="career-artifact__top"><span>TRAINING FILE</span><span>02 / 03</span></div>
+          <div className="career-artifact__main">
+            <span className="career-artifact__eyebrow">MACHINE LEARNING</span>
+            <h3>UNIFIED<br />MENTOR</h3>
+            <strong>STRUCTURED TRAINING &amp; INTERNSHIP PROGRAM</strong>
           </div>
-          <div className="experience-note__body">
-            <span className="experience-note__eyebrow">MACHINE LEARNING</span>
-            <h3>Unified Mentor</h3>
-            <strong>Structured Training &amp; Internship Program</strong>
-            <p>Built UAC Capacity Monitor as the submitted ML project.</p>
-          </div>
-          <div className="experience-note__footer">
-            <span>UAC Capacity Monitor</span>
-            <span>Forecasting · Streamlit</span>
-            <span className="experience-note__arrow">↗</span>
-          </div>
+          <div className="career-artifact__line"><span>MAR — JUN 2026</span><span>UAC CAPACITY MONITOR</span></div>
+          <div className="career-artifact__bottom"><span>PYTHON · FORECASTING</span><span>↗</span></div>
         </div>
       </button>
 
-      <button
-        type="button"
-        className="experience-note experience-note--gssoc"
+      <button type="button" className="career-artifact career-artifact--open-source"
         onClick={() => navigate("/experience/girlscript-summer-of-code")}
-        aria-label="Open GirlScript Summer of Code experience"
-      >
-        <span className="experience-note__pin" aria-hidden="true" />
-        <div className="experience-note__card">
-          <div className="experience-note__meta">
-            <span>03 · OPEN SOURCE</span>
-            <span>MAY — AUG 2026</span>
+        aria-label="Open GirlScript Summer of Code experience">
+        <span className="career-artifact__tape career-artifact__tape--gssoc" aria-hidden="true" />
+        <div className="career-artifact__contribution">
+          <div className="career-artifact__top"><span>OPEN SOURCE</span><span>03 / 03</span></div>
+          <div className="career-artifact__main">
+            <span className="career-artifact__eyebrow">COMMUNITY · CONTRIBUTION</span>
+            <h3>GSSOC ’26</h3>
+            <strong>AI / AGENTS TRACK</strong>
           </div>
-          <div className="experience-note__body">
-            <span className="experience-note__eyebrow">COMMUNITY · CONTRIBUTION</span>
-            <h3>GirlScript Summer of Code ’26</h3>
-            <strong>Open Source Contributor · AI / Agents</strong>
-            <p>Collaborative GitHub development and community-driven contribution.</p>
-          </div>
-          <div className="experience-note__footer">
-            <span>Top 2%</span>
-            <span>GitHub · Open Source</span>
-            <span className="experience-note__arrow">↗</span>
-          </div>
+          <div className="career-artifact__commit"><span>PR</span><span>ISSUE</span><span>COLLAB</span></div>
+          <div className="career-artifact__stamp career-artifact__stamp--round">TOP 2%</div>
+          <div className="career-artifact__bottom"><span>GITHUB · OPEN SOURCE</span><span>↗</span></div>
         </div>
       </button>
-
     </div>
   );
 }
@@ -1338,26 +1309,14 @@ function DeskPage() {
     EXPERIENCE & ACHIEVEMENT
 ===================================================== */}
 
-<section
-  id="experience"
-  className="section achievement-section"
->
+<section id="experience" className="section achievement-section">
   <div className="section-heading">
     <span>04</span>
-    <h2>
-      <span className="section-highlight section-highlight--amber">Experience &amp; Achievement</span>
-    </h2>
+    <h2><span className="section-highlight section-highlight--amber">Experience &amp; Achievement</span></h2>
   </div>
-
-  <p className="experience-desk-intro">
-    A few milestones, projects and communities that have shaped how I build.
-  </p>
-
+  <p className="experience-desk-intro">A few milestones, projects and communities that have shaped how I build.</p>
   <ExperienceNotes compact />
-
-  <div className="experience-desk-cta">
-    <NavLink to="/experience">EXPLORE EXPERIENCE ↗</NavLink>
-  </div>
+  <div className="experience-desk-cta"><NavLink to="/experience">EXPLORE EXPERIENCE ↗</NavLink></div>
 </section>
 
 
